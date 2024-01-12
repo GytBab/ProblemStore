@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem page</title>
+</head>
+<body>
+    <h3>Register a problem:</h3>
+    <form method="post" th:action="@{/problems/create}" th:object="${problem}">
+
+        <label>Laser:</label>
+        <input type="text" placeholder="laser" th:field="*{laser}"><br/>
+
+        <label>Effect:</label>
+        <input type="text" placeholder="problem effect" th:field="*{effect}"><br/>
+
+        <label>Cause:</label>
+        <input type="text" placeholder="problem cause" th:field="*{cause}"><br/>
+
+        <label>Solution:</label>
+        <input type="text" placeholder="problem solution" th:field="*{solution}"><br/>
+
+        <label>Start time:</label>
+        <input type="time" placeholder="start time" th:field="*{startTime}"><br/>
+
+        <label>End time:</label>
+        <input type="time" placeholder="end time" th:field="*{endTime}"><br/>
+
+        <label>Entry date:</label>
+        <input type="date" placeholder="date" th:field="*{entryDate}"><br/>
+
+        <label>Part number:</label>
+        <input type="text" placeholder="part number" th:field="*{partNo}"><br/>
+
+        <label>Comment:</label>
+        <input type="text" placeholder="comment about problem" th:field="*{comment}"><br/>
+
+        <label>Photos:</label>
+        <input type="image" placeholder="problem image" th:field="*{photo}"><br/>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
