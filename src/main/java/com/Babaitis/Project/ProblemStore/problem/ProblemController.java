@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class ProblemController {
 
@@ -17,13 +19,13 @@ public class ProblemController {
         this.problemService = problemService;
     }
 
-    @GetMapping(HttpEndPoints.PRODUCTS_CREATE)
+    @GetMapping(HttpEndPoints.PROBLEMS_CREATE)
     public String problem(Model model) {
         model.addAttribute("problem", new Problem());
-        return "problem";
+        return "problem/problem";
     }
 
-    @PostMapping(HttpEndPoints.PRODUCTS_CREATE)
+    @PostMapping(HttpEndPoints.PROBLEMS_CREATE)
     public String createNewProduct(Problem problem) {
         problemService.saveProblem(problem);
         System.out.println("currently in the database");
@@ -31,5 +33,11 @@ public class ProblemController {
         return "/welcome/welcome";
     }
 
+    @GetMapping(HttpEndPoints.PROBLEMS)
+    public String getListOfProblems(Model model) {
+        final List<Problem> allProblems = problemService.getAllProblems();
+        model.addAttribute("problemList", allProblems);
+        return "problem/problems";
+    }
 
 }

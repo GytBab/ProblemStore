@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problem list page</title>
+</head>
+<body>
+<h3>List of Problems:</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Laser</th>
+            <th>Effect</th>
+            <th>Cause</th>
+            <th>Solution</th>
+            <th>Part number</th>
+            <th>comment</th>
+            <th>photo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="problem: ${problemList}">
+            <td th:text="${problem.getLaser()}"></td>
+            <td th:text="${problem.getEffect()}"></td>
+            <td th:text="${problem.getCause()}"></td>
+            <td th:text="${problem.getSolution()}"></td>
+            <td th:text="${problem.getPartNo()}"></td>
+            <td th:text="${problem.getComment()}"></td>
+            <td th:text="${problem.getPhoto()}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
