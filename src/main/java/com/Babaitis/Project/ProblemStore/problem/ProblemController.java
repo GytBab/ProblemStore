@@ -36,7 +36,8 @@ public class ProblemController {
     @PostMapping(HttpEndPoints.PROBLEMS_CREATE)
     public String createNewProblem(Model model, Problem problem) {
         problemService.saveProblem(problem);
-        return getListOfProblems(model);
+        model.addAttribute("message", "Problem was registered successfully!");
+        return "problem/problem";
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS)
