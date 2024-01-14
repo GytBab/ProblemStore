@@ -2,6 +2,7 @@ package com.Babaitis.Project.ProblemStore.problem;
 
 import lombok.*;
 import java.sql.Blob;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -9,6 +10,7 @@ import java.sql.Blob;
 @NoArgsConstructor
 @ToString
 public class Problem {
+    private UUID uuid;
     private String laser;
     private String effect;
     private String cause;
