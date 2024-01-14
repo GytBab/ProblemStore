@@ -9,8 +9,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class Problem {
-    private UUID uuid;
+    private UUID problemUuid;
     private String laser;
     private String effect;
     private String cause;

@@ -6,7 +6,7 @@
 </head>
 <body>
     <h3>Register a problem:</h3>
-    <form method="post" th:action="@{/problems/create}" th:object="${problem}">
+    <form method="post" th:object="${problem}">
 
         <label>Laser:</label>
         <input type="text" placeholder="laser" th:field="*{laser}"><br/>

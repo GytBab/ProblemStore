@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class ProblemController {
@@ -20,17 +22,21 @@ public class ProblemController {
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS_CREATE)
-    public String problem(Model model) {
-        model.addAttribute("problem", new Problem());
+    public String getFormForCreate(Model model) {
+        model.addAttribute("problem", Problem.builder().build());
+        return "problem/problem";
+    }
+
+    @GetMapping(HttpEndPoints.PROBLEMS_UPDATE)
+    public String getFormForUpdate(Model model, @PathVariable UUID problemUuid) {
+        model.addAttribute("problem", problemService.getProblemByUuid(problemUuid));
         return "problem/problem";
     }
 
     @PostMapping(HttpEndPoints.PROBLEMS_CREATE)
-    public String createNewProduct(Problem problem) {
+    public String createNewProblem(Model model, Problem problem) {
         problemService.saveProblem(problem);
-        System.out.println("currently in the database");
-        problemService.getAllProblems().forEach(System.out::println);
-        return "/welcome/welcome";
+        return getListOfProblems(model);
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS)
@@ -38,6 +44,18 @@ public class ProblemController {
         final List<Problem> allProblems = problemService.getAllProblems();
         model.addAttribute("problemList", allProblems);
         return "problem/problems";
+    }
+
+    @PostMapping(HttpEndPoints.PROBLEMS_UPDATE)
+    public String updateProblem(Model model, Problem problem, @PathVariable UUID problemUuid) {
+        problemService.updateProblem(problem);
+        return getListOfProblems(model);
+    }
+
+    @GetMapping(HttpEndPoints.PROBLEMS_DELETE)
+    public String deleteProblem(Model model, @PathVariable UUID problemUuid) {
+        problemService.deleteProblemByUuid(problemUuid);
+        return getListOfProblems(model);
     }
 
 }

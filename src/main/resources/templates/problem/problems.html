@@ -5,6 +5,8 @@
     <title>Problem list page</title>
 </head>
 <body>
+<div th:if="${problemList.isEmpty()}">Problem list is empty</div>
+<div th:unless="${problemList.isEmpty()}">
 <h3>List of Problems:</h3>
 <table>
     <thead>
@@ -16,19 +18,22 @@
             <th>Part number</th>
             <th>comment</th>
             <th>photo</th>
+            <th></th> <!-- empty row for buttons (edit, delete, etc)-->
         </tr>
     </thead>
     <tbody>
         <tr th:each="problem: ${problemList}">
-            <td th:text="${problem.getLaser()}"></td>
+            <td> <a th:href="@{/problems/{problemUuid}/update(problemUuid=${problem.problemUuid})}" th:text="${problem.getLaser()}"></a></td>
             <td th:text="${problem.getEffect()}"></td>
             <td th:text="${problem.getCause()}"></td>
             <td th:text="${problem.getSolution()}"></td>
             <td th:text="${problem.getPartNo()}"></td>
             <td th:text="${problem.getComment()}"></td>
             <td th:text="${problem.getPhoto()}"></td>
+            <td> <a th:href="@{/problems/{problemUuid}/delete(problemUuid=${problem.problemUuid})}">Delete</a></td>
         </tr>
     </tbody>
 </table>
+</div>
 </body>
 </html>

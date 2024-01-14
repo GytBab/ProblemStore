@@ -2,21 +2,38 @@ package com.Babaitis.Project.ProblemStore.problem;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Repository
 public class ProblemDao {
 
-    private List<Problem> problems = new ArrayList<>();
+    private Map<UUID, Problem> problems = new HashMap<>();
 
+    // CRUD operations:
+    // Create
     public void save(Problem problem) {
-        problem.setUuid(UUID.randomUUID());
-        problems.add(problem);
+        final UUID uuid = UUID.randomUUID();
+        problem.setProblemUuid(uuid);
+        problems.put(uuid, problem);
     }
 
+    // Read
     public List<Problem> getAllProblems() {
-        return problems;
+        return new ArrayList<>(problems.values());
     }
+
+    public Problem getProblemByUuid(UUID uuid) {
+        return problems.get(uuid);
+    }
+
+    // Update
+    public void update(Problem problem) {
+        problems.put(problem.getProblemUuid(), problem);
+    }
+
+    // Delete
+    public void deleteByUuid(UUID uuid) {
+        problems.remove(uuid);
+    }
+
 }
