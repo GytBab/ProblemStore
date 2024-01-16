@@ -10,3 +10,7 @@ spring:
     url: jdbc:h2:mem:problemStore_db
     username: sa
     password: password
+  sql:
+    init:
+      schema-locations: classpath:db/ddl-scripts.sql
+      data-locations: classpath:db/dml-scripts.sql
