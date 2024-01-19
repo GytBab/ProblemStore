@@ -17,6 +17,7 @@
             <th>Cause</th>
             <th>Solution</th>
             <th>Part number</th>
+            <th>Date</th>
             <th>comment</th>
             <th>photo</th>
             <th></th> <!-- empty row for buttons (edit, delete, etc)-->
@@ -29,8 +30,9 @@
             <td th:text="${problem.getCause()}"></td>
             <td th:text="${problem.getSolution()}"></td>
             <td th:text="${problem.getPartNo()}"></td>
+            <td th:text="${problem.getEntry_date()}"></td>
             <td th:text="${problem.getComment()}"></td>
-            <td th:text="${problem.getPhoto()}"></td>
+            <td th:text="${problem.getPhotos()}"></td>
             <td> <a th:href="@{/problems/{problemUuid}/delete(problemUuid=${problem.problemUuid})}">Delete</a></td>
         </tr>
     </tbody>

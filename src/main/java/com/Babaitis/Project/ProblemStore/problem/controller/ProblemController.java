@@ -1,13 +1,14 @@
-package com.Babaitis.Project.ProblemStore.problem;
+package com.Babaitis.Project.ProblemStore.problem.controller;
 
 import com.Babaitis.Project.ProblemStore.HttpEndPoints;
+import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import java.util.List;
 import java.util.UUID;
 

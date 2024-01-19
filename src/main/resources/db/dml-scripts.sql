@@ -53,17 +53,17 @@ INSERT INTO laser_data (team_lead, pulse_length, type, model)
         ('2', 'Picosecond Tunable', 'PG', 'PGx11'),
         ('2', 'Picosecond Tunable', 'SFG', 'SFG');
 
-INSERT INTO laser_record (model, serial_number, status, start_date, end_date)
+INSERT INTO laser (laser_uuid, model, serial_number, status, start_date, end_date)
     VALUES
-        (16, 'PGL628', 'Finished', '2023-05-25', '2023-11-15'),
-        (5, 'DPL320', 'Manufacturing', '2022-09-02', null),
-        (1, 'NLL485', 'Quality Assurance', '2023-06-15', null),
-        (2, 'HNL499', 'Orders', '2023-05-25', null),
-        (22, 'PGD220', 'Finished', '2023-11-25', '2024-01-15'),
-        (14, 'FSL163', 'Quality Assurance', '2023-12-01', null),
-        (31, 'SFG059', 'Manufacturing', '2023-01-02', null);
+        ('423553e6-12e6-48b7-8ecb-50229903464d', 16, 'PGL628', 'Finished', '2023-05-25', '2023-11-15'),
+        ('e9cf79ee-01f4-4750-81de-6ac265fd55a8', 5, 'DPL320', 'Manufacturing', '2022-09-02', null),
+        ('d2db3ec8-4021-4b09-8210-e37391a67099', 1, 'NLL485', 'Quality Assurance', '2023-06-15', null),
+        ('acb1ef66-6a15-47cf-a88e-c3645d61edc1', 2, 'HNL499', 'Orders', '2023-05-25', null),
+        ('9535b028-75f6-4b2c-967d-1059c4ad76cc', 22, 'PGD220', 'Finished', '2023-11-25', '2024-01-15'),
+        ('95bec6f2-8d7d-41cd-bd7f-51fa19ce21d6', 14, 'FSL163', 'Quality Assurance', '2023-12-01', null),
+        ('99cd7e63-5831-4e84-ad1a-39fd466fdef0', 31, 'SFG059', 'Manufacturing', '2023-01-02', null);
 
-INSERT INTO problem_effect (name, parent_id)
+INSERT INTO effect (name, parent_id)
     VALUES
         ('Problem Effect', null),
         ('Failed Tests', 1),
@@ -81,7 +81,7 @@ INSERT INTO problem_effect (name, parent_id)
         ('Electronics', 1),
         ('Synchronization', 14);
 
-INSERT INTO problem_cause (name, parent_id)
+INSERT INTO cause (name, parent_id)
     VALUES
         ('Problem Cause', null),
         ('Optics', 1),
@@ -126,18 +126,18 @@ INSERT INTO problem_cause (name, parent_id)
         ('Motors', 39),
         ('Engineer Fault', 1);
 
-INSERT INTO problem_record (laser_record_id, problem_effect_id, problem_cause_id, solution, start_time, end_time,
+INSERT INTO problem (problem_uuid, laser_id, effect_id, cause_id, solution, start_time, end_time,
                           entry_date, part_no, comment, photos)
     VALUES
-        (1, 6, 2, 'Forgot to turn water on', null, null, '2023-12-12', 'xnt-042.05.001', '', null),
-        (5, 9, 10, 'Cleaning', null, null, '2023-12-12', 'kld-052.02.001', '', null),
-        (7, 8, 9, 'Replacing', null, null, '2023-12-12', 'xgt-042.04.012', '', null),
-        (2, 9, 15, 'Removing', null, null, '2023-12-12', 'ffs-042.05.020', '', null),
-        (3, 10, 3, 'Remeasuring', null, null, '2023-12-12', 'ntf-042.04.005', '', null),
-        (2, 15, 15, 'Cleaning', null, null, '2023-12-12', 'xnt-042.05.002', '', null),
-        (4, 12, 9, 'Throwing away', null, null, '2023-12-12', 'mly-052.05.001', '', null);
+        ('910879c5-caa6-421b-81a7-9edf9e20207d', 1, 6, 2, 'Forgot to turn water on', null, null, '2023-12-12', 'xnt-042.05.001', '', null),
+        ('57d69d83-ff99-461c-ba9b-9e7bd647dd4b', 5, 9, 10, 'Cleaning', null, null, '2023-12-12', 'kld-052.02.001', '', null),
+        ('cbd54fca-ddda-434c-8750-a3cc389e86ac', 7, 8, 9, 'Replacing', null, null, '2023-12-12', 'xgt-042.04.012', '', null),
+        ('bc1f3c58-c2fe-4d18-90db-7fb93bb67b81', 2, 9, 15, 'Removing', null, null, '2023-12-12', 'ffs-042.05.020', '', null),
+        ('83a53c0a-8a7a-4993-b81e-e894ace17eab', 3, 10, 3, 'Remeasuring', null, null, '2023-12-12', 'ntf-042.04.005', '', null),
+        ('7628e975-8f40-4430-a359-4e45c0a9ef72', 2, 15, 15, 'Cleaning', null, null, '2023-12-12', 'xnt-042.05.002', '', null),
+        ('87f40f62-6b06-4b63-a4bd-c7c96f63f82f', 4, 12, 9, 'Throwing away', null, null, '2023-12-12', 'mly-052.05.001', '', null);
 
-INSERT INTO laser_engineer (laser_record_id, employee_id)
+INSERT INTO laser_engineer (laser_id, employee_id)
     VALUES
         (1, 1),
         (2, 6),

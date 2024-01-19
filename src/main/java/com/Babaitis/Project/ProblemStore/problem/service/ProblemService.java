@@ -1,12 +1,18 @@
-package com.Babaitis.Project.ProblemStore.problem;
+package com.Babaitis.Project.ProblemStore.problem.service;
 
+import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class ProblemService {
 
     private ProblemDao problemDao;

@@ -1,21 +1,21 @@
 
-CREATE TABLE problem_effect (
+CREATE TABLE effect (
     id IDENTITY NOT NULL,
     name VARCHAR(50) NOT NULL,
     parent_id INTEGER,
-    CONSTRAINT problem_effect_pk PRIMARY KEY (id)
+    CONSTRAINT effect_pk PRIMARY KEY (id)
 );
-COMMENT ON TABLE problem_effect IS 'Table for storing possible problem effects on the laser occurring during laser manufacturing process
+COMMENT ON TABLE effect IS 'Table for storing possible problem effects on the laser occurring during laser manufacturing process
 (Adjacency list model)';
 
 
-CREATE TABLE problem_cause (
+CREATE TABLE cause (
     id IDENTITY NOT NULL,
     name VARCHAR(50) NOT NULL,
     parent_id INTEGER,
-    CONSTRAINT problem_cause_pk PRIMARY KEY (id)
+    CONSTRAINT cause_pk PRIMARY KEY (id)
 );
-COMMENT ON TABLE problem_cause IS 'Table for storing possible problem effect causes occurring during laser manufacturing process
+COMMENT ON TABLE cause IS 'Table for storing possible problem effect causes occurring during laser manufacturing process
 (Adjacency list model)';
 
 
@@ -38,7 +38,6 @@ CREATE TABLE employee (
 );
 COMMENT ON TABLE employee IS 'Table for storing information about users/employees';
 
-
 CREATE UNIQUE INDEX employee_idx
     ON employee
         ( employee_uuid );
@@ -54,27 +53,28 @@ CREATE TABLE laser_data (
 COMMENT ON TABLE laser_data IS 'This table stores general information about products(lasers) offered by the user company';
 
 
-CREATE TABLE laser_record (
+CREATE TABLE laser (
     id IDENTITY NOT NULL,
+    laser_uuid UUID NOT NULL,
     model INTEGER NOT NULL,
     serial_number VARCHAR(50) NOT NULL,
     status VARCHAR(20) NOT NULL,
     start_date DATE,
     end_date DATE,
-    CONSTRAINT laser_record_pk PRIMARY KEY (id)
+    CONSTRAINT laser_pk PRIMARY KEY (id)
 );
-COMMENT ON TABLE laser_record IS 'Table for storing information throughout the manufacturing process of a specific laser';
+COMMENT ON TABLE laser IS 'Table for storing information throughout the manufacturing process of a specific laser';
 
+CREATE UNIQUE INDEX laser_idx
+    ON laser
+        ( serial_number, laser_uuid );
 
-CREATE UNIQUE INDEX laser_record_idx
-    ON laser_record
-        ( serial_number );
-
-CREATE TABLE problem_record (
+CREATE TABLE problem (
     id IDENTITY NOT NULL,
-    laser_record_id BIGINT NOT NULL,
-    problem_effect_id INTEGER,
-    problem_cause_id INTEGER,
+    problem_uuid UUID NOT NULL,
+    laser_id BIGINT NOT NULL,
+    effect_id INTEGER,
+    cause_id INTEGER,
     solution VARCHAR NOT NULL,
     start_time TIME,
     end_time TIME,
@@ -82,44 +82,46 @@ CREATE TABLE problem_record (
     part_no VARCHAR(100),
     comment VARCHAR,
     photos LONGVARBINARY,
-    CONSTRAINT problem_record_pk PRIMARY KEY (id)
+    CONSTRAINT problem_pk PRIMARY KEY (id)
 );
-COMMENT ON TABLE problem_record IS 'This table stores information about an encountered problem during manufacturing';
+COMMENT ON TABLE problem IS 'This table stores information about an encountered problem during manufacturing';
 
+CREATE UNIQUE INDEX problem_idx
+    ON problem
+        ( problem_uuid );
 
 CREATE TABLE laser_engineer (
     id IDENTITY NOT NULL,
-    laser_record_id BIGINT NOT NULL,
+    laser_id BIGINT NOT NULL,
     employee_id BIGINT NOT NULL,
     CONSTRAINT laser_engineer_pk PRIMARY KEY (id)
 );
 
-
 CREATE UNIQUE INDEX laser_engineer_idx
     ON laser_engineer
-        ( laser_record_id, employee_id );
+        ( laser_id, employee_id );
 
-ALTER TABLE problem_effect ADD CONSTRAINT problem_effect_problem_effect_fk
+ALTER TABLE effect ADD CONSTRAINT effect_effect_fk
     FOREIGN KEY (parent_id)
-        REFERENCES problem_effect (id)
+        REFERENCES effect (id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
 
-ALTER TABLE problem_cause ADD CONSTRAINT problem_cause_problem_cause_fk
+ALTER TABLE cause ADD CONSTRAINT cause_cause_fk
     FOREIGN KEY (parent_id)
-        REFERENCES problem_cause (id)
+        REFERENCES cause (id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
 
-ALTER TABLE problem_record ADD CONSTRAINT problem_effect_problem_record_fk
-    FOREIGN KEY (problem_effect_id)
-        REFERENCES problem_effect (id)
+ALTER TABLE problem ADD CONSTRAINT effect_problem_fk
+    FOREIGN KEY (effect_id)
+        REFERENCES effect (id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
 
-ALTER TABLE problem_record ADD CONSTRAINT problem_cause_problem_record_fk
-    FOREIGN KEY (problem_cause_id)
-        REFERENCES problem_cause (id)
+ALTER TABLE problem ADD CONSTRAINT cause_problem_fk
+    FOREIGN KEY (cause_id)
+        REFERENCES cause (id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
 
@@ -141,20 +143,20 @@ ALTER TABLE laser_engineer ADD CONSTRAINT employee_laser_engineer_fk
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
 
-ALTER TABLE laser_record ADD CONSTRAINT laser_data_laser_record_fk
+ALTER TABLE laser ADD CONSTRAINT laser_data_laser_fk
     FOREIGN KEY (model)
         REFERENCES laser_data (id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
 
-ALTER TABLE laser_engineer ADD CONSTRAINT laser_record_laser_engineer_fk
-    FOREIGN KEY (laser_record_id)
-        REFERENCES laser_record (id)
+ALTER TABLE laser_engineer ADD CONSTRAINT laser_laser_engineer_fk
+    FOREIGN KEY (laser_id)
+        REFERENCES laser(id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
 
-ALTER TABLE problem_record ADD CONSTRAINT laser_record_problem_record_fk
-    FOREIGN KEY (laser_record_id)
-        REFERENCES laser_record (id)
+ALTER TABLE problem ADD CONSTRAINT laser_problem_fk
+    FOREIGN KEY (laser_id)
+        REFERENCES laser (id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
