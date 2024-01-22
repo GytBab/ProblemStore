@@ -130,12 +130,12 @@ INSERT INTO problem (problem_uuid, laser_id, effect_id, cause_id, solution, star
                           entry_date, part_no, comment, photos)
     VALUES
         ('910879c5-caa6-421b-81a7-9edf9e20207d', 1, 6, 2, 'Forgot to turn water on', null, null, '2023-12-12', 'xnt-042.05.001', '', null),
-        ('57d69d83-ff99-461c-ba9b-9e7bd647dd4b', 5, 9, 10, 'Cleaning', null, null, '2023-12-12', 'kld-052.02.001', '', null),
-        ('cbd54fca-ddda-434c-8750-a3cc389e86ac', 7, 8, 9, 'Replacing', null, null, '2023-12-12', 'xgt-042.04.012', '', null),
-        ('bc1f3c58-c2fe-4d18-90db-7fb93bb67b81', 2, 9, 15, 'Removing', null, null, '2023-12-12', 'ffs-042.05.020', '', null),
-        ('83a53c0a-8a7a-4993-b81e-e894ace17eab', 3, 10, 3, 'Remeasuring', null, null, '2023-12-12', 'ntf-042.04.005', '', null),
-        ('7628e975-8f40-4430-a359-4e45c0a9ef72', 2, 15, 15, 'Cleaning', null, null, '2023-12-12', 'xnt-042.05.002', '', null),
-        ('87f40f62-6b06-4b63-a4bd-c7c96f63f82f', 4, 12, 9, 'Throwing away', null, null, '2023-12-12', 'mly-052.05.001', '', null);
+        ('57d69d83-ff99-461c-ba9b-9e7bd647dd4b', 5, 9, 10, 'Cleaning', null, null, '2024-01-18', 'kld-052.02.001', '', null),
+        ('cbd54fca-ddda-434c-8750-a3cc389e86ac', 7, 8, 9, 'Replacing', null, null, '2022-08-25', 'xgt-042.04.012', '', null),
+        ('bc1f3c58-c2fe-4d18-90db-7fb93bb67b81', 2, 9, 15, 'Removing', null, null, '2022-12-09', 'ffs-042.05.020', '', null),
+        ('83a53c0a-8a7a-4993-b81e-e894ace17eab', 3, 10, 3, 'Remeasuring', null, null, '2023-02-02', 'ntf-042.04.005', '', null),
+        ('7628e975-8f40-4430-a359-4e45c0a9ef72', 2, 15, 15, 'Cleaning', null, null, '2023-12-17', 'xnt-042.05.002', '', null),
+        ('87f40f62-6b06-4b63-a4bd-c7c96f63f82f', 4, 12, 9, 'Throwing away', null, null, '2021-08-30', 'mly-052.05.001', '', null);
 
 INSERT INTO laser_engineer (laser_id, employee_id)
     VALUES
