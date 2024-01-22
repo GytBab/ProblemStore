@@ -2,6 +2,8 @@ package com.Babaitis.Project.ProblemStore.problem.service;
 
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
+import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
+import com.Babaitis.Project.ProblemStore.problem.mappers.ProblemMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,10 +20,12 @@ import java.util.UUID;
 public class ProblemService {
 
     private ProblemDao problemDao;
+    private ProblemMapper mapper;
 
     @Autowired
-    public ProblemService(ProblemDao problemDao) {
+    public ProblemService(ProblemDao problemDao, ProblemMapper mapper) {
         this.problemDao = problemDao;
+        this.mapper = mapper;
     }
 
     // CRUD operations:
@@ -31,12 +35,12 @@ public class ProblemService {
     }
 
     // Read
-    public Page<Problem> getAllProblemsPage(Pageable pageable) {
-        return problemDao.getPage(pageable);
+    public Page<ProblemDto> getAllProblemsPage(Pageable pageable) {
+        return problemDao.getPage(pageable).map(problem -> mapper.toProblemDto(problem));
     }
 
-    public Problem getProblemByUuid(UUID uuid) {
-        return problemDao.getProblemByUuid(uuid);
+    public ProblemDto getProblemByUuid(UUID uuid) {
+        return mapper.toProblemDto(problemDao.getProblemByUuid(uuid));
     }
 
     // Update

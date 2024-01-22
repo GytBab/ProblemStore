@@ -2,6 +2,7 @@ package com.Babaitis.Project.ProblemStore.problem.controller;
 
 import com.Babaitis.Project.ProblemStore.HttpEndPoints;
 import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,7 +47,7 @@ public class ProblemController {
 
     @GetMapping(HttpEndPoints.PROBLEMS)
     public String getListOfProblems(Model model, @PageableDefault(size = 3) Pageable pageable) {
-        final Page<Problem> allProblems = problemService.getAllProblemsPage(pageable);
+        final Page<ProblemDto> allProblems = problemService.getAllProblemsPage(pageable);
         model.addAttribute("problemList", allProblems);
         return "problem/problems";
     }
