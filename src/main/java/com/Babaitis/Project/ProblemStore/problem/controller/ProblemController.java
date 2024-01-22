@@ -47,7 +47,7 @@ public class ProblemController {
 
     @GetMapping(HttpEndPoints.PROBLEMS)
     public String getListOfProblems(Model model,
-                                    @PageableDefault(size = 3, sort = {"partNo"}, direction = Sort.Direction.ASC) Pageable pageable) {
+                                    @PageableDefault(size = 3, sort = {"entryDate"}, direction = Sort.Direction.ASC) Pageable pageable) {
         final Page<ProblemDto> allProblems = problemService.getAllProblemsPage(pageable);
         model.addAttribute("problemList", allProblems);
         return "problem/problems";

@@ -15,7 +15,7 @@ public class ProblemMapper {
                 problem.getCause(),
                 problem.getSolution(),
                 problem.getPartNo(),
-                problem.getEntry_date(),
+                problem.getEntryDate(),
                 problem.getComment(),
                 problem.getPhotos());
     }

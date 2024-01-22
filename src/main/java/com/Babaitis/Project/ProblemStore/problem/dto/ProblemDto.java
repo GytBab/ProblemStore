@@ -3,10 +3,8 @@ package com.Babaitis.Project.ProblemStore.problem.dto;
 import com.Babaitis.Project.ProblemStore.cause.Cause;
 import com.Babaitis.Project.ProblemStore.effect.Effect;
 import com.Babaitis.Project.ProblemStore.laser.Laser;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
@@ -19,7 +17,7 @@ public class ProblemDto {
     private Cause cause;
     private String solution;
     private String partNo;
-    private String entry_date;
+    private String entryDate;
     private String comment;
     private String photos;
 }

@@ -5,12 +5,6 @@ import com.Babaitis.Project.ProblemStore.effect.Effect;
 import com.Babaitis.Project.ProblemStore.laser.Laser;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
-
-import java.math.BigInteger;
-import java.sql.Array;
-import java.sql.Blob;
-import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -35,7 +29,7 @@ public class Problem {
     private Cause cause;
     private String solution;
     private String partNo;
-    private String entry_date;
+    private String entryDate;
     private String comment;
     private String photos;
 }
