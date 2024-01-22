@@ -36,6 +36,12 @@
         <label>Photos:</label>
         <input type="image" placeholder="problem image" th:field="*{photos}"><br/>
 
+        <label>Cause:</label>
+        <select th:field="*{cause}">
+            <option th:each="cause: ${causeList}">
+            </option>
+        </select><br/>
+
         <button type="submit">Submit</button>
     </form>
 </body>

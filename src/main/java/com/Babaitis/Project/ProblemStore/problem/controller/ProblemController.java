@@ -4,6 +4,9 @@ import com.Babaitis.Project.ProblemStore.HttpEndPoints;
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.service.ProblemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,22 +45,22 @@ public class ProblemController {
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS)
-    public String getListOfProblems(Model model) {
-        final List<Problem> allProblems = problemService.getAllProblems();
+    public String getListOfProblems(Model model, @PageableDefault(size = 3) Pageable pageable) {
+        final Page<Problem> allProblems = problemService.getAllProblemsPage(pageable);
         model.addAttribute("problemList", allProblems);
         return "problem/problems";
     }
 
     @PostMapping(HttpEndPoints.PROBLEMS_UPDATE)
-    public String updateProblem(Model model, Problem problem, @PathVariable UUID problemUuid) {
+    public String updateProblem(Model model, Problem problem, Pageable pageable) {
         problemService.updateProblem(problem);
-        return getListOfProblems(model);
+        return getListOfProblems(model, pageable);
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS_DELETE)
-    public String deleteProblem(Model model, @PathVariable UUID problemUuid) {
+    public String deleteProblem(Model model, @PathVariable UUID problemUuid, Pageable pageable) {
         problemService.deleteProblemByUuid(problemUuid);
-        return getListOfProblems(model);
+        return getListOfProblems(model, pageable);
     }
 
 }

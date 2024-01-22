@@ -3,8 +3,9 @@ package com.Babaitis.Project.ProblemStore.problem.dao;
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -28,6 +29,11 @@ public class ProblemJpaDao implements ProblemDao {
     @Override
     public List<Problem> getAllProblems() {
         return repository.findAll();
+    }
+
+    @Override
+    public Page<Problem> getPage(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override

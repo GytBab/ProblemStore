@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,8 +31,8 @@ public class ProblemService {
     }
 
     // Read
-    public List<Problem> getAllProblems() {
-        return problemDao.getAllProblems();
+    public Page<Problem> getAllProblemsPage(Pageable pageable) {
+        return problemDao.getPage(pageable);
     }
 
     public Problem getProblemByUuid(UUID uuid) {

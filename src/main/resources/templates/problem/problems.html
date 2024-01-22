@@ -20,7 +20,7 @@
             <th>Date</th>
             <th>comment</th>
             <th>photo</th>
-            <th></th> <!-- empty row for buttons (edit, delete, etc)-->
+            <th></th> <!-- empty row for buttons (edit, delete, etc.)-->
         </tr>
     </thead>
     <tbody>
@@ -37,6 +37,20 @@
         </tr>
     </tbody>
 </table>
+    <nav class="d-flex justify-content-end" aria-label="Page navigation">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${!problemList.hasPrevious() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/problems(page=${problemList.number} - 1)}">Previous</a>
+            </li>
+            <li class="page-item" th:each="pageNumber: ${#numbers.sequence(0, problemList.totalPages - 1)}"
+            th:classappend="${pageNumber == problemList.number ? 'active' : ''}">
+                <a class="page-link" th:href="@{/problems(page=${pageNumber})}" th:text="${pageNumber + 1}"></a>
+            </li>
+            <li class="page-item" th:classappend="${!problemList.hasNext() ? 'disabled' : ''}">
+                <a class="page-link" th:href="@{/problems(page=${problemList.number} + 1)}">Next</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 </body>
 </html>
