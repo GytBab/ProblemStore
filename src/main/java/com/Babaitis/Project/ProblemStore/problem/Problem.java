@@ -5,6 +5,7 @@ import com.Babaitis.Project.ProblemStore.effect.Effect;
 import com.Babaitis.Project.ProblemStore.laser.Laser;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.UUID;
 
 @Getter

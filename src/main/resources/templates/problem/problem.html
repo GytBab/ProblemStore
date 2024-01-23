@@ -7,7 +7,9 @@
 </head>
 <body>
     <h3>Register a problem:</h3>
-    <div class="alert alert-success" role="alert" th:text="${message}">
+    <div th:if="${message ne null}"
+         class="alert alert-success" role="alert"
+         th:text="${message}">
         Success message when problem was registered
     </div>
     <form method="post" th:object="${problem}">

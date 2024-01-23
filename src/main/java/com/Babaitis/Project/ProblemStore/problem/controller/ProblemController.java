@@ -27,8 +27,9 @@ public class ProblemController {
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS_CREATE)
-    public String getFormForCreate(Model model) {
+    public String getFormForCreate(Model model, String message) {
         model.addAttribute("problem", Problem.builder().build());
+        model.addAttribute("message", message);
         return "problem/problem";
     }
 
@@ -41,8 +42,7 @@ public class ProblemController {
     @PostMapping(HttpEndPoints.PROBLEMS_CREATE)
     public String createNewProblem(Model model, Problem problem) {
         problemService.saveProblem(problem);
-        model.addAttribute("message", "Problem was registered successfully!");
-        return "problem/problem";
+        return "redirect:/problem/problem?message=Problem registered successfully!";
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS)
