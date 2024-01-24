@@ -1,10 +1,11 @@
 package com.Babaitis.Project.ProblemStore.problem.controller;
 
 import com.Babaitis.Project.ProblemStore.HttpEndPoints;
+import com.Babaitis.Project.ProblemStore.helper.MessageService;
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.service.ProblemService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -17,19 +18,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.UUID;
 
 @Controller
+@RequiredArgsConstructor
 public class ProblemController {
 
-    private ProblemService problemService;
+    private final ProblemService problemService;
+    private final MessageService messageService;
 
-    @Autowired
-    public ProblemController(ProblemService problemService) {
-        this.problemService = problemService;
-    }
 
     @GetMapping(HttpEndPoints.PROBLEMS_CREATE)
     public String getFormForCreate(Model model, String message) {
         model.addAttribute("problem", Problem.builder().build());
-        model.addAttribute("message", message);
+        model.addAttribute("message", messageService.getTranslatedMessage(message));
         return "problem/problem";
     }
 
@@ -40,9 +39,9 @@ public class ProblemController {
     }
 
     @PostMapping(HttpEndPoints.PROBLEMS_CREATE)
-    public String createNewProblem(Model model, Problem problem) {
+    public String createNewProblem(Problem problem) {
         problemService.saveProblem(problem);
-        return "redirect:/problem/problem?message=Problem registered successfully!";
+        return "redirect:/problem/problem?message=problem.create.messages.success";
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS)

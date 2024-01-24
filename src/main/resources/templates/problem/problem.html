@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Problem registry page</title>
+    <title th:text="#{problem.create.title}">Problem registry page</title>
 </head>
 <body>
-    <h3>Register a problem:</h3>
+    <h3 th:text="#{problem.create.title}">Register a problem:</h3>
     <div th:if="${message ne null}"
          class="alert alert-success" role="alert"
          th:text="${message}">
@@ -14,37 +14,37 @@
     </div>
     <form method="post" th:object="${problem}">
 
-        <label>Laser:</label>
+        <label th:text="#{problem.create.laser}">Laser:</label>
         <input type="text" placeholder="laser" th:field="*{laser}"><br/>
 
-        <label>Effect:</label>
+        <label th:text="#{problem.create.effect}">Effect:</label>
         <input type="text" placeholder="problem effect" th:field="*{effect}"><br/>
 
-        <label>Cause:</label>
+        <label th:text="#{problem.create.cause}">Cause:</label>
         <input type="text" placeholder="problem cause" th:field="*{cause}"><br/>
 
-        <label>Solution:</label>
+        <label th:text="#{problem.create.solution}">Solution:</label>
         <input type="text" placeholder="problem solution" th:field="*{solution}"><br/>
 
-        <label>Date:</label>
+        <label th:text="#{problem.create.date}">Date:</label>
         <input type="text" placeholder="date of entry" th:field="*{entryDate}"><br/>
 
-        <label>Part number:</label>
+        <label th:text="#{problem.create.partNo}">Part number:</label>
         <input type="text" placeholder="part number" th:field="*{partNo}"><br/>
 
-        <label>Comment:</label>
+        <label th:text="#{problem.create.comment}">Comment:</label>
         <input type="text" placeholder="comment about problem" th:field="*{comment}"><br/>
 
-        <label>Photos:</label>
+        <label th:text="#{problem.create.Photos}">Photos:</label>
         <input type="image" placeholder="problem image" th:field="*{photos}"><br/>
 
-        <label>Cause:</label>
+        <label th:text="#{problem.create.cause}">Cause:</label>
         <select th:field="*{cause}">
             <option th:each="cause: ${causeList}">
             </option>
         </select><br/>
 
-        <button type="submit">Submit</button>
+        <button type="submit" th:text="#{problem.create.action}">Submit</button>
     </form>
 </body>
 </html>
