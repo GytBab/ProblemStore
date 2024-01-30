@@ -5,7 +5,6 @@ import com.Babaitis.Project.ProblemStore.cause.dao.CauseDao;
 import com.Babaitis.Project.ProblemStore.effect.dao.EffectDao;
 import com.Babaitis.Project.ProblemStore.helper.MessageService;
 import com.Babaitis.Project.ProblemStore.laser.dao.LaserDao;
-import com.Babaitis.Project.ProblemStore.laser_data.Laser_data;
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.service.ProblemService;
@@ -72,7 +71,9 @@ public class ProblemController {
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS_DELETE)
-    public String deleteProblem(Model model, @PathVariable UUID problemUuid, Pageable pageable) {
+    public String deleteProblem(Model model,
+                                @PathVariable UUID problemUuid,
+                                @PageableDefault(size = 3, sort = {"entryDate"}, direction = Sort.Direction.ASC) Pageable pageable) {
         problemService.deleteProblemByUuid(problemUuid);
         return getListOfProblems(model, pageable);
     }
