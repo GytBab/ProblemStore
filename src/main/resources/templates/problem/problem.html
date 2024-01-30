@@ -15,13 +15,22 @@
     <form method="post" th:object="${problem}">
 
         <label th:text="#{problem.create.laser}">Laser:</label>
-        <input type="text" placeholder="laser" th:field="*{laser}"><br/>
+        <select th:field="*{laser}">
+            <option th:each="laser: ${lasers}" th:value="${laser.getId()}" th:text="${laser.getSerial_number()}">
+            </option>
+        </select><br/>
 
         <label th:text="#{problem.create.effect}">Effect:</label>
-        <input type="text" placeholder="problem effect" th:field="*{effect}"><br/>
+        <select th:field="*{effect}">
+            <option th:each="effect: ${effects}" th:value="${effect.getId()}" th:text="${effect.getName()}">
+            </option>
+        </select><br/>
 
         <label th:text="#{problem.create.cause}">Cause:</label>
-        <input type="text" placeholder="problem cause" th:field="*{cause}"><br/>
+        <select th:field="*{cause}">
+            <option th:each="cause: ${causes}" th:value="${cause.getId()}" th:text="${cause.getName()}">
+            </option>
+        </select><br/>
 
         <label th:text="#{problem.create.solution}">Solution:</label>
         <input type="text" placeholder="problem solution" th:field="*{solution}"><br/>
@@ -38,11 +47,7 @@
         <label th:text="#{problem.create.Photos}">Photos:</label>
         <input type="image" placeholder="problem image" th:field="*{photos}"><br/>
 
-        <label th:text="#{problem.create.cause}">Cause:</label>
-        <select th:field="*{cause}">
-            <option th:each="cause: ${causeList}">
-            </option>
-        </select><br/>
+
 
         <button type="submit" th:text="#{problem.create.action}">Submit</button>
     </form>
