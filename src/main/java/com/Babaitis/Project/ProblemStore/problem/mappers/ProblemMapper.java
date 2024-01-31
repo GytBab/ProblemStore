@@ -20,5 +20,17 @@ public class ProblemMapper {
                 problem.getPhotos());
     }
 
-
+    public Problem fromProblemDto(ProblemDto problemDto) {
+        return Problem.builder()
+                .problemUuid(problemDto.getProblemUuid())
+                .laser(problemDto.getLaser())
+                .effect(problemDto.getEffect())
+                .cause((problemDto.getCause()))
+                .solution(problemDto.getSolution())
+                .partNo(problemDto.getPartNo())
+                .entryDate(problemDto.getEntryDate())
+                .comment(problemDto.getComment())
+                .photos(problemDto.getPhotos())
+                .build();
+    }
 }

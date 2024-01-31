@@ -6,13 +6,10 @@ import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.mappers.ProblemMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -30,7 +27,8 @@ public class ProblemService {
 
     // CRUD operations:
     // Create
-    public void saveProblem(Problem problem) {
+    public void saveProblem(ProblemDto problemDto) {
+        Problem problem = mapper.fromProblemDto(problemDto);
         problemDao.save(problem);
     }
 
@@ -44,8 +42,20 @@ public class ProblemService {
     }
 
     // Update
-    public void updateProblem(Problem problem) {
-        problemDao.update(problem);
+    public void updateProblem(ProblemDto problemDto) {
+
+        Problem problemWithNewFields = mapper.fromProblemDto(problemDto);
+        Problem problemToUpdate = problemDao.getProblemByUuid(problemWithNewFields.getProblemUuid());
+        // Merging old problem in the database with the new values obtained from frontEnd
+        problemToUpdate.setLaser(problemWithNewFields.getLaser());
+        problemToUpdate.setEffect(problemWithNewFields.getEffect());
+        problemToUpdate.setCause(problemWithNewFields.getCause());
+        problemToUpdate.setSolution(problemWithNewFields.getSolution());
+        problemToUpdate.setEntryDate(problemWithNewFields.getEntryDate());
+        problemToUpdate.setPartNo(problemWithNewFields.getPartNo());
+        problemToUpdate.setComment(problemWithNewFields.getComment());
+        problemToUpdate.setPhotos(problemWithNewFields.getPhotos());
+        problemDao.update(problemToUpdate);
     }
 
     // Delete

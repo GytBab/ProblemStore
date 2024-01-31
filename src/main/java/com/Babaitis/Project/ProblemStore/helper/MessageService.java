@@ -17,7 +17,7 @@ public class MessageService {
         try {
             return messageSource.getMessage(key, null, LocaleContextHolder.getLocale());
         } catch (NoSuchMessageException e) {
-            if (key != null && !key.equals("")) {
+            if (key != null && !key.isEmpty()) {
                 log.error("Key " + key + " does not exist!");
 
                 return String.format("?%s?", key);

@@ -12,7 +12,7 @@
          th:text="${message}">
         Success message when problem was registered
     </div>
-    <form method="post" th:object="${problem}">
+    <form method="post" th:object="${problemDto}">
 
         <label th:text="#{problem.create.laser}">Laser:</label>
         <select th:field="*{laser}">
@@ -46,7 +46,6 @@
 
         <label th:text="#{problem.create.Photos}">Photos:</label>
         <input type="image" placeholder="problem image" th:field="*{photos}"><br/>
-
 
 
         <button type="submit" th:text="#{problem.create.action}">Submit</button>
