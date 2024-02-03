@@ -1,4 +1,4 @@
-package com.Babaitis.Project.ProblemStore.problem;
+package com.Babaitis.Project.ProblemStore.problem.pojo;
 
 import com.Babaitis.Project.ProblemStore.cause.Cause;
 import com.Babaitis.Project.ProblemStore.effect.Effect;

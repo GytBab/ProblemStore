@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.problem.dao;
 
-import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

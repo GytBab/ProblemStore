@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.effect;
 
-import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import jakarta.persistence.*;
 import lombok.*;
 

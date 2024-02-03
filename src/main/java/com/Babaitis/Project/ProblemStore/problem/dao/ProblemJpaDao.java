@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.problem.dao;
 
-import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;

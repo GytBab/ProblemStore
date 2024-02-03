@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.problem.mapper;
 
-import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import org.springframework.stereotype.Component;
 

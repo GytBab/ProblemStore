@@ -3,7 +3,7 @@ package com.Babaitis.Project.ProblemStore.problem.service;
 import com.Babaitis.Project.ProblemStore.cause.service.CauseService;
 import com.Babaitis.Project.ProblemStore.effect.service.EffectService;
 import com.Babaitis.Project.ProblemStore.laser.LaserService;
-import com.Babaitis.Project.ProblemStore.problem.Problem;
+import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.exception.ProblemNotFoundException;
