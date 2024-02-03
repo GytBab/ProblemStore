@@ -9,16 +9,17 @@ import org.springframework.stereotype.Component;
 public class ProblemMapper implements Mapper<Problem, ProblemDto> {
 
     public ProblemDto toDto(Problem problem) {
-        return new ProblemDto(
-                problem.getProblemUuid(),
-                problem.getLaser(),
-                problem.getEffect(),
-                problem.getCause(),
-                problem.getSolution(),
-                problem.getPartNo(),
-                problem.getEntryDate(),
-                problem.getComment(),
-                problem.getPhotos());
+        return ProblemDto.builder()
+                .problemUuid(problem.getProblemUuid())
+                .laser(problem.getLaser())
+                .effect(problem.getEffect())
+                .cause(problem.getCause())
+                .solution(problem.getSolution())
+                .partNo(problem.getPartNo())
+                .entryDate(problem.getEntryDate())
+                .comment(problem.getComment())
+                .photos(problem.getPhotos())
+                .build();
     }
 
     public Problem fromDto(ProblemDto problemDto) {
