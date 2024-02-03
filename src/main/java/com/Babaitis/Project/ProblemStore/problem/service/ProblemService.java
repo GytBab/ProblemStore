@@ -8,7 +8,7 @@ import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.exception.ProblemNotFoundException;
 import com.Babaitis.Project.ProblemStore.problem.mapper.ProblemMapper;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,8 +21,8 @@ import java.util.UUID;
 @Transactional
 public class ProblemService {
 
-    private ProblemDao problemDao;
-    private ProblemMapper mapper;
+    private final ProblemDao problemDao;
+    private final ProblemMapper mapper;
     private final CauseService causeService;
     private final EffectService effectService;
     private final LaserService laserService;
@@ -38,6 +38,7 @@ public class ProblemService {
 
     // CRUD operations:
     // Create
+    @Transactional
     public void saveProblem(ProblemDto problemDto) {
         Problem problem = mapper.fromProblemDto(problemDto);
         problemDao.save(problem);
@@ -55,6 +56,7 @@ public class ProblemService {
     }
 
     // Update
+    @Transactional
     public void updateProblem(ProblemDto problemDto) {
 
         Problem problemWithNewFields = mapper.fromProblemDto(problemDto);
@@ -73,6 +75,7 @@ public class ProblemService {
     }
 
     // Delete
+    @Transactional
     public void deleteProblemByUuid(UUID uuid) {
         problemDao.deleteByUuid(uuid);
     }
