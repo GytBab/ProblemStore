@@ -1,5 +1,8 @@
 package com.Babaitis.Project.ProblemStore.problem.service;
 
+import com.Babaitis.Project.ProblemStore.cause.service.CauseService;
+import com.Babaitis.Project.ProblemStore.effect.service.EffectService;
+import com.Babaitis.Project.ProblemStore.laser.LaserService;
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.UUID;
 
@@ -18,11 +22,17 @@ public class ProblemService {
 
     private ProblemDao problemDao;
     private ProblemMapper mapper;
+    private final CauseService causeService;
+    private final EffectService effectService;
+    private final LaserService laserService;
 
     @Autowired
-    public ProblemService(ProblemDao problemDao, ProblemMapper mapper) {
+    public ProblemService(ProblemDao problemDao, ProblemMapper mapper, CauseService causeService, EffectService effectService, LaserService laserService) {
         this.problemDao = problemDao;
         this.mapper = mapper;
+        this.causeService = causeService;
+        this.effectService = effectService;
+        this.laserService = laserService;
     }
 
     // CRUD operations:
@@ -63,4 +73,9 @@ public class ProblemService {
         problemDao.deleteByUuid(uuid);
     }
 
+    public void getChoiceForProblemRegistration(Model model) {
+        model.addAttribute("causes", causeService.getAllCauses());
+        model.addAttribute("effects", effectService.getAllEffects());
+        model.addAttribute("lasers", laserService.getAllLasers());
+    }
 }

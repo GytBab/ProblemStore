@@ -1,10 +1,7 @@
 package com.Babaitis.Project.ProblemStore.problem.controller;
 
 import com.Babaitis.Project.ProblemStore.HttpEndPoints;
-import com.Babaitis.Project.ProblemStore.cause.dao.CauseDao;
-import com.Babaitis.Project.ProblemStore.effect.dao.EffectDao;
 import com.Babaitis.Project.ProblemStore.helper.MessageService;
-import com.Babaitis.Project.ProblemStore.laser.dao.LaserDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.service.ProblemService;
 import jakarta.validation.Valid;
@@ -27,33 +24,27 @@ public class ProblemController {
 
     private final ProblemService problemService;
     private final MessageService messageService;
-    private final CauseDao causeDao;
-    private final EffectDao effectDao;
-    private final LaserDao laserDao;
 
 
     @GetMapping(HttpEndPoints.PROBLEMS_CREATE)
     public String getFormForCreate(Model model, String message) {
         model.addAttribute("problemDto", ProblemDto.builder().build());
         model.addAttribute("message", messageService.getTranslatedMessage(message));
-        model.addAttribute("causes", causeDao.getAll());
-        model.addAttribute("effects", effectDao.getAll());
-        model.addAttribute("lasers", laserDao.getAll());
+        problemService.getChoiceForProblemRegistration(model);
         return "problem/problem";
     }
 
     @GetMapping(HttpEndPoints.PROBLEMS_UPDATE)
     public String getFormForUpdate(Model model, @PathVariable UUID problemUuid) {
         model.addAttribute("problemDto", problemService.getProblemByUuid(problemUuid));
-        model.addAttribute("causes", causeDao.getAll());
-        model.addAttribute("effects", effectDao.getAll());
-        model.addAttribute("lasers", laserDao.getAll());
+        problemService.getChoiceForProblemRegistration(model);
         return "problem/problem";
     }
 
     @PostMapping(HttpEndPoints.PROBLEMS_CREATE)
-    public String createNewProblem(@Valid ProblemDto problem, BindingResult errors) {
+    public String createNewProblem(Model model, @Valid ProblemDto problem, BindingResult errors) {
         if (errors.hasErrors()) {
+            problemService.getChoiceForProblemRegistration(model);
             return "problem/problem";
         }
         problemService.saveProblem(problem);
