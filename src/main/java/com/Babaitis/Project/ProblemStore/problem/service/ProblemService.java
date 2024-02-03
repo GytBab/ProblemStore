@@ -7,7 +7,7 @@ import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.exception.ProblemNotFoundException;
-import com.Babaitis.Project.ProblemStore.problem.mappers.ProblemMapper;
+import com.Babaitis.Project.ProblemStore.problem.mapper.ProblemMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

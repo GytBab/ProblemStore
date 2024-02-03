@@ -1,4 +1,4 @@
-package com.Babaitis.Project.ProblemStore.problem.mappers;
+package com.Babaitis.Project.ProblemStore.problem.mapper;
 
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
