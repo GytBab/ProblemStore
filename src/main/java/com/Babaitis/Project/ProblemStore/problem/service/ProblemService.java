@@ -6,6 +6,7 @@ import com.Babaitis.Project.ProblemStore.laser.LaserService;
 import com.Babaitis.Project.ProblemStore.problem.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
+import com.Babaitis.Project.ProblemStore.problem.exception.ProblemNotFoundException;
 import com.Babaitis.Project.ProblemStore.problem.mappers.ProblemMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,14 +49,17 @@ public class ProblemService {
     }
 
     public ProblemDto getProblemByUuid(UUID uuid) {
-        return mapper.toProblemDto(problemDao.getProblemByUuid(uuid));
+        return problemDao.getProblemByUuid(uuid)
+                .map(mapper::toProblemDto)
+                .orElseThrow(ProblemNotFoundException::new);
     }
 
     // Update
     public void updateProblem(ProblemDto problemDto) {
 
         Problem problemWithNewFields = mapper.fromProblemDto(problemDto);
-        Problem problemToUpdate = problemDao.getProblemByUuid(problemWithNewFields.getProblemUuid());
+        Problem problemToUpdate = problemDao.getProblemByUuid(problemWithNewFields.getProblemUuid())
+                .orElseThrow(ProblemNotFoundException::new);
         // Merging old problem in the database with the new values obtained from frontEnd
         problemToUpdate.setLaser(problemWithNewFields.getLaser());
         problemToUpdate.setEffect(problemWithNewFields.getEffect());

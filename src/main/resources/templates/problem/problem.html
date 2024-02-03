@@ -18,7 +18,7 @@
     <form method="post" th:object="${problemDto}">
 
         <div class="form-group">
-            <label th:text="#{problem.create.laser}">Laser:</label>
+            <label class="form-label" th:text="#{problem.create.laser}">Laser:</label>
             <select class="form-control" th:field="*{laser}">
                 <option th:each="laser: ${lasers}" th:value="${laser.getId()}" th:text="${laser.getSerial_number()}">
                 </option>
@@ -27,7 +27,7 @@
 
         <br/>
         <div class="form-group">
-            <label th:text="#{problem.create.effect}">Effect:</label>
+            <label class="form-label" th:text="#{problem.create.effect}">Effect:</label>
             <select class="form-control" th:field="*{effect}">
                 <option th:each="effect: ${effects}" th:value="${effect.getId()}" th:text="${effect.getName()}">
                 </option>
@@ -36,7 +36,7 @@
 
         <br/>
         <div class="form-group">
-            <label th:text="#{problem.create.cause}">Cause:</label>
+            <label class="form-label" th:text="#{problem.create.cause}">Cause:</label>
             <select class="form-control" th:field="*{cause}">
                 <option th:each="cause: ${causes}" th:value="${cause.getId()}" th:text="${cause.getName()}">
                 </option>
@@ -45,33 +45,33 @@
 
         <br/>
         <div class="form-group">
-            <label th:text="#{problem.create.solution}">Solution:</label>
+            <label class="form-label" th:text="#{problem.create.solution}">Solution:</label>
             <input class="form-control" type="text" placeholder="problem solution" th:field="*{solution}">
             <span th:if="${#fields.hasErrors('solution')}" th:errors="*{solution}" th:errorclass="form-error"></span>
         </div>
 
         <br/>
         <div class="form-group">
-            <label th:text="#{problem.create.date}">Date:</label>
+            <label class="form-label" th:text="#{problem.create.date}">Date:</label>
             <input class="form-control" type="date" placeholder="date of entry" th:field="*{entryDate}">
             <span th:if="${#fields.hasErrors('entryDate')}" th:errors="*{entryDate}" th:errorclass="form-error"></span>
         </div>
 
         <br/>
         <div class="form-group">
-            <label th:text="#{problem.create.partNo}">Part number:</label>
+            <label class="form-label" th:text="#{problem.create.partNo}">Part number:</label>
             <input class="form-control" type="text" placeholder="part number" th:field="*{partNo}">
         </div>
 
         <br/>
         <div class="form-group">
-            <label th:text="#{problem.create.comment}">Comment:</label>
+            <label class="form-label" th:text="#{problem.create.comment}">Comment:</label>
             <input class="form-control" type="text" placeholder="comment about problem" th:field="*{comment}">
         </div>
 
         <br/>
         <div class="form-group">
-            <label th:text="#{problem.create.Photos}">Photos:</label>
+            <label class="form-label" th:text="#{problem.create.Photos}">Photos:</label>
             <input class="form-control" type="text" placeholder="problem image link" th:field="*{photos}">
         </div>
 

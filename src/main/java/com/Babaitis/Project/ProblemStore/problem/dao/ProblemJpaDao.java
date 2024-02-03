@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Primary
@@ -37,7 +38,7 @@ public class ProblemJpaDao implements ProblemDao {
     }
 
     @Override
-    public Problem getProblemByUuid(UUID uuid) {
+    public Optional<Problem> getProblemByUuid(UUID uuid) {
         return repository.findProblemByProblemUuid(uuid);
     }
 
