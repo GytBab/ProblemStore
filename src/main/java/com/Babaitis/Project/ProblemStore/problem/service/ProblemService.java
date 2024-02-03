@@ -40,18 +40,18 @@ public class ProblemService {
     // Create
     @Transactional
     public void saveProblem(ProblemDto problemDto) {
-        Problem problem = mapper.fromProblemDto(problemDto);
+        Problem problem = mapper.fromDto(problemDto);
         problemDao.save(problem);
     }
 
     // Read
     public Page<ProblemDto> getAllProblemsPage(Pageable pageable) {
-        return problemDao.getPage(pageable).map(problem -> mapper.toProblemDto(problem));
+        return problemDao.getPage(pageable).map(mapper::toDto);
     }
 
     public ProblemDto getProblemByUuid(UUID uuid) {
         return problemDao.getProblemByUuid(uuid)
-                .map(mapper::toProblemDto)
+                .map(mapper::toDto)
                 .orElseThrow(ProblemNotFoundException::new);
     }
 
@@ -59,7 +59,7 @@ public class ProblemService {
     @Transactional
     public void updateProblem(ProblemDto problemDto) {
 
-        Problem problemWithNewFields = mapper.fromProblemDto(problemDto);
+        Problem problemWithNewFields = mapper.fromDto(problemDto);
         Problem problemToUpdate = problemDao.getProblemByUuid(problemWithNewFields.getProblemUuid())
                 .orElseThrow(ProblemNotFoundException::new);
         // Merging old problem in the database with the new values obtained from frontEnd

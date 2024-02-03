@@ -1,13 +1,14 @@
 package com.Babaitis.Project.ProblemStore.problem.mapper;
 
+import com.Babaitis.Project.ProblemStore.common.mapper.Mapper;
 import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProblemMapper {
+public class ProblemMapper implements Mapper<Problem, ProblemDto> {
 
-    public ProblemDto toProblemDto(Problem problem) {
+    public ProblemDto toDto(Problem problem) {
         return new ProblemDto(
                 problem.getProblemUuid(),
                 problem.getLaser(),
@@ -20,7 +21,7 @@ public class ProblemMapper {
                 problem.getPhotos());
     }
 
-    public Problem fromProblemDto(ProblemDto problemDto) {
+    public Problem fromDto(ProblemDto problemDto) {
         return Problem.builder()
                 .problemUuid(problemDto.getProblemUuid())
                 .laser(problemDto.getLaser())
