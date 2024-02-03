@@ -21,6 +21,7 @@ public class ProblemDto {
     @NotBlank (message = "{problemDto.solution.notBlank}")
     private String solution;
     private String partNo;
+    @NotBlank (message = "{problemDto.entryDate.notBlank}")
     private String entryDate;
     private String comment;
     private String photos;
