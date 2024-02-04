@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title th:text="#{home.welcome.title}">Ekspla Problem Store Welcome Page</title>
-</head>
+<head th:replace="~{fragments/layout :: head(#{home.welcome.title})}"></head>
 <body>
+<nav th:replace="~{fragments/layout :: nav('hello')}">placeholder</nav>
 <h1>Welcome to Ekspla Problem Store!</h1>
 <h2 th:text="#{hello.world}"></h2>
 <h3 th:text="#{time.date} + ' ' + ${modelDate}"></h3>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
 </body>
 </html>
