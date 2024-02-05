@@ -1,5 +1,6 @@
-package com.Babaitis.Project.ProblemStore.laser;
+package com.Babaitis.Project.ProblemStore.laser.service;
 
+import com.Babaitis.Project.ProblemStore.laser.Laser;
 import com.Babaitis.Project.ProblemStore.laser.dao.LaserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

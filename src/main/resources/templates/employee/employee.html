@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/layout :: head(#{employee.create.title})}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: nav('/employee/create')}">placeholder</nav>
+<main class="container">
+    <h3 th:text="#{employee.create.title}">Create an employee:</h3>
+    <div th:if="${message ne null and message.length > 0}"
+         class="alert alert-success" role="alert"
+         th:text="${message}">
+        Success message when employee was created
+    </div>
+    <form method="post" th:object="${employeeDto}">
+
+        <div class="form-group">
+            <label class="form-label" th:text="#{employee.create.name}">Name:</label>
+            <input class="form-control" type="text" placeholder="employee name" th:field="*{name}">
+        </div>
+
+        </br>
+        <div class="form-group">
+            <label class="form-label" th:text="#{employee.create.surname}">Surname:</label>
+            <input class="form-control" type="text" placeholder="employee surname" th:field="*{surname}">
+        </div>
+
+        </br>
+        <div class="form-group">
+            <label class="form-label" th:text="#{employee.create.email}">Email:</label>
+            <input class="form-control" type="text" placeholder="employee email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:errorclass="form-error"></span>
+        </div>
+
+        <br/>
+        <div class="form-group">
+            <label class="form-label" th:text="#{employee.create.position}">Position:</label>
+            <select class="form-control" th:field="*{positionId}">
+                <option th:each="position: ${positions}" th:value="${position.getId()}" th:text="${position.getName()}">
+                </option>
+            </select>
+        </div>
+
+        <br/>
+        <button class="btn btn-primary" type="submit" th:text="#{problem.create.action}">Submit</button>
+    </form>
+</main>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+</body>
+</html>
