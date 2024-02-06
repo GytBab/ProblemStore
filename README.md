@@ -1,6 +1,9 @@
 # Ekspla ProblemStore
 WEB page for learning Spring MVC and registering problems during laser manufacturing process
 
+### Prerequisites
+This project used Bootstrap 5 and Spring Boot 3.2.1.
+
 ### Requirements
 * Language JDK 17
 * Check if JAVA_HOME used JDK 17
