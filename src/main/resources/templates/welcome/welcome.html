@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{fragments/layout :: head(#{home.welcome.title})}"></head>
 <body>
+<header th:replace="~{fragments/layout :: header}"></header>
 <nav th:replace="~{fragments/layout :: nav('hello')}">placeholder</nav>
 <h1>Welcome to Ekspla Problem Store!</h1>
 <h2 th:text="#{hello.world}"></h2>

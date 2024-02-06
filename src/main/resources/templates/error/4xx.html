@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{fragments/layout :: head(#{error.page.title})}"></head>
 <body>
+<header th:replace="~{fragments/layout :: header}"></header>
 <nav th:replace="~{fragments/layout :: nav('')}">placeholder</nav>
 <h1>Error codes from 400 -> 499 instead 404</h1>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>

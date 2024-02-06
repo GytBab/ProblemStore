@@ -1,9 +1,19 @@
+body {
+    background-color: #e6e6d7;
+    color: #006432;
+    min-height: 100vh;
+    font-size: calc(4px + 1vmin);
+}
+
 .form-error {
     color: #a10606;
 }
 
-.stealth-selector {
-    border: none;
-    background: none;
-    color: rgba(0,0,0,.55);
+.header_logo {
+    display: block;
+    height: 50px;
+    width: 270px;
+    background: url(https://ekspla.com/wp-content/themes/ekspla/img/ekspla-logo.png) no-repeat 50%;
+    background-size: contain;
+    margin: 0 auto 24px;
 }

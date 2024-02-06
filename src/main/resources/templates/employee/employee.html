@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{fragments/layout :: head(#{employee.create.title})}"></head>
 <body>
-<nav th:replace="~{fragments/layout :: nav('/employee/create')}">placeholder</nav>
+<header th:replace="~{fragments/layout :: header}"></header>
+<nav th:replace="~{fragments/layout :: nav('employee/create')}">placeholder</nav>
 <main class="container">
     <h3 th:text="#{employee.create.title}">Create an employee:</h3>
     <div th:if="${message ne null and message.length > 0}"

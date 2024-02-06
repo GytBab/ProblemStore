@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="~{fragments/layout :: head(#{error.page.title})}"></head>
 <body>
+<header th:replace="~{fragments/layout :: header}"></header>
 <nav th:replace="~{fragments/layout :: nav('')}">placeholder</nav>
 <div class="container">
     <img style="width: 100%" th:src="@{/images/errors/404_laser_spaceman.jpg}">
