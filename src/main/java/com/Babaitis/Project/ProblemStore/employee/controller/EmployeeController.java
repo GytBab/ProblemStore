@@ -35,6 +35,7 @@ public class EmployeeController {
         }
         System.out.println("got a successful registration request");
         System.out.println(employeeDto);
+        employeeService.saveEmployee(employeeDto);
 
         return "redirect:/employee/create?message=employee.create.messages.success";
     }

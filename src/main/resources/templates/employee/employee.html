@@ -15,12 +15,14 @@
         <div class="form-group">
             <label class="form-label" th:text="#{employee.create.name}">Name:</label>
             <input class="form-control" type="text" placeholder="employee name" th:field="*{name}">
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" th:errorclass="form-error"></span>
         </div>
 
         </br>
         <div class="form-group">
             <label class="form-label" th:text="#{employee.create.surname}">Surname:</label>
             <input class="form-control" type="text" placeholder="employee surname" th:field="*{surname}">
+            <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" th:errorclass="form-error"></span>
         </div>
 
         </br>
@@ -37,6 +39,20 @@
                 <option th:each="position: ${positions}" th:value="${position.getId()}" th:text="${position.getName()}">
                 </option>
             </select>
+        </div>
+
+        </br>
+        <div>
+            <label class="form-label" th:text="#{employee.create.password}">Password:</label>
+            <input class="form-control" type="text" placeholder="employee password" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('global')}" th:errors="*{global}" th:errorclass="form-error"></span>
+        </div>
+
+        </br>
+        <div>
+            <label class="form-label" th:text="#{employee.create.repeatPassword}">Repeat Password:</label>
+            <input class="form-control" type="text" placeholder="employee repeat password" th:field="*{repeatPassword}">
+            <span th:if="${#fields.hasErrors('global')}" th:errors="*{global}" th:errorclass="form-error"></span>
         </div>
 
         <br/>
