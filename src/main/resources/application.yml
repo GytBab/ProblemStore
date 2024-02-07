@@ -32,3 +32,12 @@ server:
   servlet:
     session:
       tracking-modes: cookie
+logging:
+  level:
+    com:
+      Babaitis:
+        Project:
+          ProblemStore:
+            config: DEBUG
+            problem: INFO
+            filter: TRACE

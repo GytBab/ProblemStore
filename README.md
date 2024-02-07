@@ -3,6 +3,7 @@ WEB page for learning Spring MVC and registering problems during laser manufactu
 
 ### Prerequisites
 This project used Bootstrap 5 and Spring Boot 3.2.1.
+Spring Security version 6.2 included.
 
 ### Requirements
 * Language JDK 17
