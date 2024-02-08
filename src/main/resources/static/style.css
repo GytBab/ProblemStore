@@ -9,6 +9,10 @@ body {
     color: #a10606;
 }
 
+body.login {
+    color: #212529;
+}
+
 .header_logo {
     display: block;
     height: 50px;
