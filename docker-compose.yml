@@ -1,22 +1,19 @@
 version: "3.8"
 services:
   mysqldb:
-    image: mysql
+    image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: 'EksplaProblemStore'
+      MYSQL_DATABASE: 'ekspla'
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
     ports:
       # <Port exposed> : < MySQL Port running inside container>
-      - '3306:3306'
+      - 3306:3306
     expose:
       # Opens port 3306 on the container
-      - '3306'
-      # Where our data will be persisted
-    volumes:
-      - ~/mysql_data:/var/lib/mysql
+      - 3306
   postgresqldb:
     image: postgres
     container_name: ca-postgres-db

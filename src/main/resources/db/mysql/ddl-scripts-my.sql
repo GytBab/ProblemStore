@@ -96,15 +96,15 @@ ALTER TABLE laser COMMENT 'Table for storing information throughout the manufact
 
 
 CREATE TABLE IF NOT EXISTS problem (
-                id BIGINT NOT NULL,
+                id BIGINT AUTO_INCREMENT NOT NULL,
                 problem_uuid VARCHAR(36) NOT NULL,
                 laser_id BIGINT NOT NULL,
                 effect_id INT NOT NULL,
                 cause_id INT NOT NULL,
                 solution TEXT NOT NULL,
                 start_time TIME,
-                end_time TIME NOT NULL,
-                entry_date DATE NOT NULL,
+                end_time TIME,
+                entry_date DATE,
                 part_no VARCHAR(100),
                 comment TEXT,
                 photos LONGBLOB,
@@ -131,7 +131,7 @@ ALTER TABLE problem COMMENT 'This table stores information about an encountered 
 
 
 CREATE TABLE IF NOT EXISTS laser_engineer (
-                id BIGINT NOT NULL,
+                id BIGINT AUTO_INCREMENT NOT NULL,
                 laser_id BIGINT NOT NULL,
                 employee_id BIGINT NOT NULL,
                 PRIMARY KEY (id),
