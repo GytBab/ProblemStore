@@ -33,6 +33,8 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/problems", true)
                         .usernameParameter("loginEmail")    //The HTTP parameter to look for the username
                         .passwordParameter("loginPassword")) //The HTTP parameter to look for the password
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.disable())
                 .build();
     }
 

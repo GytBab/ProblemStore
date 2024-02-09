@@ -46,18 +46,18 @@
         <div>
             <label class="form-label" th:text="#{employee.create.password}">Password:</label>
             <input class="form-control" type="text" placeholder="employee password" th:field="*{password}">
-            <span th:if="${#fields.hasErrors('global')}" th:errors="*{global}" th:errorclass="form-error"></span>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="form-error"></span>
         </div>
 
         </br>
         <div>
             <label class="form-label" th:text="#{employee.create.repeatPassword}">Repeat Password:</label>
             <input class="form-control" type="text" placeholder="employee repeat password" th:field="*{repeatPassword}">
-            <span th:if="${#fields.hasErrors('global')}" th:errors="*{global}" th:errorclass="form-error"></span>
+            <span th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" th:errorclass="form-error"></span>
         </div>
 
         <br/>
-        <button class="btn btn-primary" type="submit" th:text="#{problem.create.action}">Submit</button>
+        <button class="btn btn-primary" id="button_enter" type="submit" th:text="#{problem.create.action}">Submit</button>
     </form>
 </main>
 <footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
