@@ -21,3 +21,8 @@ body.login {
     background-size: contain;
     margin: 0 auto 24px;
 }
+
+#button_enter {
+    background-color: #006432;
+    color: white;
+}
