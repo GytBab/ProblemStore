@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    active: mysql
   main:
     banner-mode: off
   h2:

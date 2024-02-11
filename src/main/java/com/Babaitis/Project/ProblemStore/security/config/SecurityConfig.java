@@ -51,12 +51,12 @@ public class SecurityConfig {
     public UserDetailsService inMemoryUserDetailsService() {
         final UserDetails adminUser = User.builder()
                 .username("admin@eksplaProblem.com")
-                .password("{noop}admin")  // look PasswordEncoderFactories
+                .password("{bcrypt}$2a$10$2kRxk7JsJr/VEVqs15WwpOJPjiuAQmPTj09zZofU5X4IZAL6HCwh.")  // look PasswordEncoderFactories
                 .roles("ADMIN", "EMPLOYEE")
                 .build();
         final UserDetails userUser = User.builder()
                 .username("employee@eksplaProblem.com")
-                .password("{noop}employee")   // look PasswordEncoderFactories
+                .password("{bcrypt}$2a$12$1oTe/IeVI73i2G1g9Ww1fO4YKTSIFFGVq//LvCO1nUHzhbKfD21AS")   // look PasswordEncoderFactories
                 .roles("EMPLOYEE")
                 .build();
 
