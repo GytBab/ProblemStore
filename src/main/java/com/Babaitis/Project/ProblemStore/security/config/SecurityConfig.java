@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -49,17 +51,22 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService inMemoryUserDetailsService() {
+        final PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
         final UserDetails adminUser = User.builder()
                 .username("admin@eksplaProblem.com")
-                .password("{bcrypt}$2a$10$2kRxk7JsJr/VEVqs15WwpOJPjiuAQmPTj09zZofU5X4IZAL6HCwh.")  // look PasswordEncoderFactories
+                .password(encoder.encode("admin"))
                 .roles("ADMIN", "EMPLOYEE")
                 .build();
-        final UserDetails userUser = User.builder()
+        final UserDetails employeeUser = User.builder()
                 .username("employee@eksplaProblem.com")
-                .password("{bcrypt}$2a$12$1oTe/IeVI73i2G1g9Ww1fO4YKTSIFFGVq//LvCO1nUHzhbKfD21AS")   // look PasswordEncoderFactories
+                .password(encoder.encode("employee"))
                 .roles("EMPLOYEE")
                 .build();
 
-        return new InMemoryUserDetailsManager(adminUser, userUser);
+        System.out.println(adminUser.getPassword());
+        System.out.println(employeeUser.getPassword());
+
+        return new InMemoryUserDetailsManager(adminUser, employeeUser);
     }
 }
