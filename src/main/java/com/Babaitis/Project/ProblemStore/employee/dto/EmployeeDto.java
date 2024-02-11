@@ -18,9 +18,9 @@ public class EmployeeDto {
     private String name;
     @NotBlank(message = "{employee.surname.notBlank}")
     private String surname;
-    @NotBlank
+    @NotBlank(message = "{employee.password.notBlank}")
     private String password;
-    @NotBlank
+    @NotBlank(message = "{employee.password.notBlank}")
     private String repeatPassword;
     @NotBlank (message = "{employee.email.notBlank}")
     @Email (message = "{employee.email.wrong}")
