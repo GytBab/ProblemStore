@@ -33,6 +33,7 @@ CREATE TABLE employee (
     name VARCHAR(50) NOT NULL,
     surname VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     position_id INTEGER NOT NULL,
     CONSTRAINT employee_pk PRIMARY KEY (id)
 );
@@ -41,6 +42,7 @@ COMMENT ON TABLE employee IS 'Table for storing information about users/employee
 CREATE UNIQUE INDEX employee_idx
     ON employee
         ( employee_uuid );
+
 
 CREATE TABLE laser_data (
     id IDENTITY NOT NULL,
@@ -69,6 +71,7 @@ CREATE UNIQUE INDEX laser_idx
     ON laser
         ( serial_number, laser_uuid );
 
+
 CREATE TABLE problem (
     id IDENTITY NOT NULL,
     problem_uuid UUID NOT NULL,
@@ -90,6 +93,7 @@ CREATE UNIQUE INDEX problem_idx
     ON problem
         ( problem_uuid );
 
+
 CREATE TABLE laser_engineer (
     id IDENTITY NOT NULL,
     laser_id BIGINT NOT NULL,
@@ -100,6 +104,20 @@ CREATE TABLE laser_engineer (
 CREATE UNIQUE INDEX laser_engineer_idx
     ON laser_engineer
         ( laser_id, employee_id );
+
+
+CREATE TABLE authority (
+    id          BIGINT primary key auto_increment,
+    name        VARCHAR(100) NOT NULL,
+    description VARCHAR(2000)
+);
+
+
+CREATE TABLE employees_authorities (
+    user_id      BIGINT,
+    authority_id BIGINT
+);
+
 
 ALTER TABLE effect ADD CONSTRAINT effect_effect_fk
     FOREIGN KEY (parent_id)

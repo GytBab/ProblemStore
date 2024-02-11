@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS employee (
                 name VARCHAR(50) NOT NULL,
                 surname VARCHAR(50) NOT NULL,
                 email VARCHAR(50) NOT NULL,
+                password VARCHAR(100) NOT NULL,
                 position_id INT NOT NULL,
                 PRIMARY KEY (id),
                 INDEX employee_idx (`employee_uuid`),
@@ -147,4 +148,18 @@ CREATE TABLE IF NOT EXISTS laser_engineer (
                 REFERENCES laser (id)
                 ON DELETE NO ACTION
                 ON UPDATE NO ACTION
+);
+
+
+CREATE TABLE IF NOT EXISTS authority (
+                id          BIGINT AUTO_INCREMENT NOT NULL,
+                name        VARCHAR(100) NOT NULL,
+                description VARCHAR(2000),
+                PRIMARY KEY (id)
+);
+
+
+CREATE TABLE IF NOT EXISTS employees_authorities (
+                employee_id  BIGINT,
+                authority_id BIGINT
 );
