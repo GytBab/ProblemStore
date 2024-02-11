@@ -1,10 +1,13 @@
 package com.Babaitis.Project.ProblemStore.employee.mapper;
 
 import com.Babaitis.Project.ProblemStore.common.mapper.Mapper;
+import com.Babaitis.Project.ProblemStore.employee.pojo.Authority;
 import com.Babaitis.Project.ProblemStore.employee.pojo.Employee;
 import com.Babaitis.Project.ProblemStore.employee.dto.EmployeeDto;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 @Component
 public class EmployeeMapper implements Mapper<Employee, EmployeeDto> {
@@ -29,6 +32,10 @@ public class EmployeeMapper implements Mapper<Employee, EmployeeDto> {
                 .email(employeeDto.getEmail())
                 .password(new BCryptPasswordEncoder().encode(employeeDto.getPassword()))
                 .positionId(employeeDto.getPositionId())
+                .authorities(Set.of(
+                        Authority.builder()
+                                .name("USER")
+                                .build()))
                 .build();
     }
 }

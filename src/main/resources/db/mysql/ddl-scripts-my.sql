@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS authority (
 );
 
 
-CREATE TABLE IF NOT EXISTS employees_authorities (
+CREATE TABLE IF NOT EXISTS employee_authorities (
                 employee_id  BIGINT,
-                authority_id BIGINT
+                authorities_id BIGINT
 );

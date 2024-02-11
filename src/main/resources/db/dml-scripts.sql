@@ -143,4 +143,26 @@ INSERT INTO laser_engineer (laser_id, employee_id)
         (2, 6),
         (5, 11),
         (2, 5),
+        (3, 1),
         (4, 3);
+
+INSERT INTO authority (name, description)
+    VALUES
+        ('ADMIN', null),
+        ('USER', 'User with limited rights');
+
+INSERT INTO employee_authorities (employee_id, authorities_id)
+    VALUES
+        (1, 1),
+        (1, 2),
+        (2, 2),
+        (3, 2),
+        (4, 2),
+        (5, 2),
+        (6, 2),
+        (7, 2),
+        (8, 2),
+        (9, 2),
+        (10, 2),
+        (11, 2),
+        (12, 2);

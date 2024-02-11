@@ -5,11 +5,11 @@ import com.Babaitis.Project.ProblemStore.position.Position;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -28,6 +28,8 @@ public class Employee implements UserDetails {
     private String surname;
     private String email;
     private String password;
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    private Set<Authority> authorities;
     @ManyToOne
     @JoinColumn(name = "position_id")
     private Position positionId;
@@ -36,7 +38,7 @@ public class Employee implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ADMIN"));
+        return authorities;
     }
 
     @Override

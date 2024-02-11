@@ -113,9 +113,9 @@ CREATE TABLE authority (
 );
 
 
-CREATE TABLE employees_authorities (
-    user_id      BIGINT,
-    authority_id BIGINT
+CREATE TABLE employee_authorities (
+    employee_id BIGINT,
+    authorities_id BIGINT
 );
 
 
