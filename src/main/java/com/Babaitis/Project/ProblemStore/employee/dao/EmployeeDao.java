@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.employee.dao;
 
-import com.Babaitis.Project.ProblemStore.employee.Employee;
+import com.Babaitis.Project.ProblemStore.employee.pojo.Employee;
 
 public interface EmployeeDao {
 

@@ -1,7 +1,7 @@
 package com.Babaitis.Project.ProblemStore.employee.mapper;
 
 import com.Babaitis.Project.ProblemStore.common.mapper.Mapper;
-import com.Babaitis.Project.ProblemStore.employee.Employee;
+import com.Babaitis.Project.ProblemStore.employee.pojo.Employee;
 import com.Babaitis.Project.ProblemStore.employee.dto.EmployeeDto;
 import org.springframework.stereotype.Component;
 

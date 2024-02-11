@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.laser_data;
 
-import com.Babaitis.Project.ProblemStore.employee.Employee;
+import com.Babaitis.Project.ProblemStore.employee.pojo.Employee;
 import com.Babaitis.Project.ProblemStore.laser.Laser;
 import jakarta.persistence.*;
 import lombok.*;

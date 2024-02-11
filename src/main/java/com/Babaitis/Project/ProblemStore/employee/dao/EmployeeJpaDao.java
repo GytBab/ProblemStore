@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.employee.dao;
 
-import com.Babaitis.Project.ProblemStore.employee.Employee;
+import com.Babaitis.Project.ProblemStore.employee.pojo.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
