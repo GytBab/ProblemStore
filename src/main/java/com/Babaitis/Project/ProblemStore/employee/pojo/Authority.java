@@ -20,6 +20,6 @@ public class Authority implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return name;
+        return "ROLE_" + name;
     }
 }
