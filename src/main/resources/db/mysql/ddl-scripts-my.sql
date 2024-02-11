@@ -161,5 +161,15 @@ CREATE TABLE IF NOT EXISTS authority (
 
 CREATE TABLE IF NOT EXISTS employee_authorities (
                 employee_id  BIGINT,
-                authorities_id BIGINT
+                authorities_id BIGINT,
+
+                FOREIGN KEY (employee_id)
+                REFERENCES employee (id)
+                ON DELETE NO ACTION
+                ON UPDATE NO ACTION,
+
+                FOREIGN KEY (authorities_id)
+                REFERENCES authority (id)
+                ON DELETE NO ACTION
+                ON UPDATE NO ACTION
 );

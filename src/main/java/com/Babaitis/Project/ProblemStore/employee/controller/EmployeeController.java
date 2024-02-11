@@ -2,10 +2,12 @@ package com.Babaitis.Project.ProblemStore.employee.controller;
 
 import com.Babaitis.Project.ProblemStore.HttpEndPoints;
 import com.Babaitis.Project.ProblemStore.employee.dto.EmployeeDto;
+import com.Babaitis.Project.ProblemStore.employee.service.EmployeeRegistrationService;
 import com.Babaitis.Project.ProblemStore.employee.service.EmployeeService;
 import com.Babaitis.Project.ProblemStore.helper.MessageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +20,7 @@ public class EmployeeController {
 
     private final MessageService messageService;
     private final EmployeeService employeeService;
+    private final EmployeeRegistrationService employeeRegistrationService;
 
     @GetMapping(HttpEndPoints.EMPLOYEE_CREATE)
     public String getEmployeeForm(Model model, String message) {
@@ -33,9 +36,14 @@ public class EmployeeController {
             employeeService.getChoiceForPosition(model);
             return "employee/employee";
         }
-        System.out.println("got a successful registration request");
-        System.out.println(employeeDto);
-        employeeService.saveEmployee(employeeDto);
+        try {
+        employeeRegistrationService.registerEmployee(employeeDto);
+        } catch (DataIntegrityViolationException e) {
+            if (e.getMessage().contains("EMAIL")) {
+                //TODO: pasiaskinti kodel nerodo klaidos html'e
+                errors.rejectValue("email", "Email already used!");
+            }
+        }
 
         return "redirect:/employee/create?message=employee.create.messages.success";
     }

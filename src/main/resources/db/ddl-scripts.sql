@@ -42,6 +42,9 @@ COMMENT ON TABLE employee IS 'Table for storing information about users/employee
 CREATE UNIQUE INDEX employee_idx
     ON employee
         ( employee_uuid );
+CREATE UNIQUE INDEX employee_email_idx
+    ON employee
+        ( email );
 
 
 CREATE TABLE laser_data (
@@ -112,11 +115,19 @@ CREATE TABLE authority (
     description VARCHAR(2000)
 );
 
+CREATE UNIQUE INDEX authority_idx
+    ON authority
+        ( name );
+
 
 CREATE TABLE employee_authorities (
     employee_id BIGINT,
     authorities_id BIGINT
 );
+
+CREATE UNIQUE INDEX employee_authorities_idx
+    ON employee_authorities
+    (employee_id, authorities_id);
 
 
 ALTER TABLE effect ADD CONSTRAINT effect_effect_fk
@@ -176,5 +187,17 @@ ALTER TABLE laser_engineer ADD CONSTRAINT laser_laser_engineer_fk
 ALTER TABLE problem ADD CONSTRAINT laser_problem_fk
     FOREIGN KEY (laser_id)
         REFERENCES laser (id)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION;
+
+ALTER TABLE employee_authorities ADD CONSTRAINT employee_employee_authorities_fk
+    FOREIGN KEY (employee_id)
+        REFERENCES employee (id)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION;
+
+ALTER TABLE employee_authorities ADD CONSTRAINT authority_employee_authorities_fk
+    FOREIGN KEY (authorities_id)
+        REFERENCES authority (id)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION;
