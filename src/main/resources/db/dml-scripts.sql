@@ -6,18 +6,18 @@ INSERT INTO position (name)
 
 INSERT INTO employee (employee_uuid, name, surname, email, password, position_id)
     VALUES
-        ('962fad3c-b5a5-4f44-abca-4c5ebc1502a5', 'Gytis', 'Babaitis', 'g.babaitis@ekspla.com', '{bcrypt}$2a$12$8MXUuO72XDX50yQrAvfX2e/GxNt.bKFK8tBo/rwGq/gMeMPG3HKrm', 2),
-        ('f8d1adf6-dbbe-47a0-8ce2-2b1e7ca55491', 'Aistis', 'Jurkonis', 'a.jurkonis@ekspla.com', '{bcrypt}$2a$12$cyb/BvD.g9ZvWX7611teVuXLvsIB8O3TgfdlwlqgmTOlLgJVTCcpy', 3),
-        ('2a5e1441-0c73-4163-a4a7-fa1cba75a273', 'Mantas', 'Slipkauskas', 'm.slipkauskas@ekspla.com', '{bcrypt}$2a$12$307E0oKehSBadDeiP9E8M.N.M17FOKsK5VtqeCkGDBIVKe1keS5Pq', 2),
-        ('ce465807-b5ce-4148-b333-8c1ccf919479', 'Matas', 'Mitrikas', 'm.mitrikas@ekspla.com', '{bcrypt}$2a$12$.D/5aFnc0QDOVbmi.p/DSOWes2jULmTAsLNR/FZHqymQB7hQ6/Jp6', 2),
-        ('4209ab7e-9695-4f7a-aed4-2c605c39d7ae', 'Kęstutis', 'Snarskis', 'k.snarskis@ekspla.com', '{bcrypt}$2a$12$VKQT5qHlQiF8cwJzhWLUregXlMui4rpwXjDWCZuUt5tHUoyTHlcKO', 1),
-        ('1de796c5-27ba-4e25-88d3-fdf62274ef30', 'Arūnas', 'Paliukas', 'a.paliukas@ekspla.com', '{bcrypt}$2a$12$wrob1yub4hfnoKhLEV6zieOv5xoZsWSuTaiAHSkXkLvIe7E9O4nnS', 3),
-        ('e7ecc54d-37bf-47d4-b245-48461835ca52', 'Andrius', 'Stašaitis', 'a.stasaitis@ekspla.com', '{bcrypt}$2a$12$F0uPqqb4mEGLXJoyFQcOj.Wqcl6SzL5ADjhO9Wdf0X4uukJ3aqCSO', 2),
-        ('9bb1f0a1-e561-4838-90f1-766bcdf5b71d', 'Julius', 'Butkus', 'j.butkus@ekspla.com', '{bcrypt}$2a$12$7TjtGmpXb4GLJMD0t0W6vu1nAtZrepvjCcmI8nLYd7KvBkw6gcc..', 3),
-        ('486fb750-cf2a-47d2-8058-de69cc1d4606', 'Arūnas', 'Dapkus', 'a.dapkus@ekspla.com', '{bcrypt}$2a$12$IVEiyVjOj4oSfAb3lNcOZeeIg2g4yty7iomBfML1VBt4iSns8U7km', 3),
-        ('46291268-f42f-457f-8530-5d38a5f12faf', 'Romanas', 'Samuilovas', 'r.samuilovas@ekspla.com', '{bcrypt}$2a$12$yBotJX2TywGPfInHgv1I8evy8sEkou6lbuLzANxcJQ3fGEMO2H.J2', 3),
-        ('89425470-3832-4bca-ae97-8285c1be20ff', 'Eglė', 'Krištopavičiūtė-Grybauskė', 'e.kristopaviciute@ekspla.com', '{bcrypt}$2a$12$uPRTFry/n50QmQLSIgdpBed98avTnayPW/dvl2KO6pNFScdJh6Hai', 3),
-        ('e72d4c70-b301-4020-8a63-ee272db00264', 'Mykolas', 'Lipnickas', 'm.lipnickas@ekspla.com', '{bcrypt}$2a$12$wLviAjtGx9iX226MNSDxROzCsY0Jqivqn1VVcEewldMvC73ObP8Ne', 3);
+        ('962fad3c-b5a5-4f44-abca-4c5ebc1502a5', 'Gytis', 'Babaitis', 'g.babaitis@ekspla.com', '$2a$12$8MXUuO72XDX50yQrAvfX2e/GxNt.bKFK8tBo/rwGq/gMeMPG3HKrm', 2),
+        ('f8d1adf6-dbbe-47a0-8ce2-2b1e7ca55491', 'Aistis', 'Jurkonis', 'a.jurkonis@ekspla.com', '$2a$12$cyb/BvD.g9ZvWX7611teVuXLvsIB8O3TgfdlwlqgmTOlLgJVTCcpy', 3),
+        ('2a5e1441-0c73-4163-a4a7-fa1cba75a273', 'Mantas', 'Slipkauskas', 'm.slipkauskas@ekspla.com', '$2a$12$307E0oKehSBadDeiP9E8M.N.M17FOKsK5VtqeCkGDBIVKe1keS5Pq', 2),
+        ('ce465807-b5ce-4148-b333-8c1ccf919479', 'Matas', 'Mitrikas', 'm.mitrikas@ekspla.com', '$2a$12$.D/5aFnc0QDOVbmi.p/DSOWes2jULmTAsLNR/FZHqymQB7hQ6/Jp6', 2),
+        ('4209ab7e-9695-4f7a-aed4-2c605c39d7ae', 'Kęstutis', 'Snarskis', 'k.snarskis@ekspla.com', '$2a$12$VKQT5qHlQiF8cwJzhWLUregXlMui4rpwXjDWCZuUt5tHUoyTHlcKO', 1),
+        ('1de796c5-27ba-4e25-88d3-fdf62274ef30', 'Arūnas', 'Paliukas', 'a.paliukas@ekspla.com', '$2a$12$wrob1yub4hfnoKhLEV6zieOv5xoZsWSuTaiAHSkXkLvIe7E9O4nnS', 3),
+        ('e7ecc54d-37bf-47d4-b245-48461835ca52', 'Andrius', 'Stašaitis', 'a.stasaitis@ekspla.com', '$2a$12$F0uPqqb4mEGLXJoyFQcOj.Wqcl6SzL5ADjhO9Wdf0X4uukJ3aqCSO', 2),
+        ('9bb1f0a1-e561-4838-90f1-766bcdf5b71d', 'Julius', 'Butkus', 'j.butkus@ekspla.com', '$2a$12$7TjtGmpXb4GLJMD0t0W6vu1nAtZrepvjCcmI8nLYd7KvBkw6gcc..', 3),
+        ('486fb750-cf2a-47d2-8058-de69cc1d4606', 'Arūnas', 'Dapkus', 'a.dapkus@ekspla.com', '$2a$12$IVEiyVjOj4oSfAb3lNcOZeeIg2g4yty7iomBfML1VBt4iSns8U7km', 3),
+        ('46291268-f42f-457f-8530-5d38a5f12faf', 'Romanas', 'Samuilovas', 'r.samuilovas@ekspla.com', '$2a$12$yBotJX2TywGPfInHgv1I8evy8sEkou6lbuLzANxcJQ3fGEMO2H.J2', 3),
+        ('89425470-3832-4bca-ae97-8285c1be20ff', 'Eglė', 'Krištopavičiūtė-Grybauskė', 'e.kristopaviciute@ekspla.com', '$2a$12$uPRTFry/n50QmQLSIgdpBed98avTnayPW/dvl2KO6pNFScdJh6Hai', 3),
+        ('e72d4c70-b301-4020-8a63-ee272db00264', 'Mykolas', 'Lipnickas', 'm.lipnickas@ekspla.com', '$2a$12$wLviAjtGx9iX226MNSDxROzCsY0Jqivqn1VVcEewldMvC73ObP8Ne', 3);
 
 INSERT INTO laser_data (team_lead, pulse_length, type, model)
     VALUES
