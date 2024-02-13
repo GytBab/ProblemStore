@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,7 +28,6 @@ public class ProblemController {
     private final ProblemService problemService;
     private final MessageService messageService;
 
-
     @GetMapping(HttpEndPoints.PROBLEMS_CREATE)
     public String getFormForCreate(Model model, String message) {
         model.addAttribute("problemDto", ProblemDto.builder().build());
@@ -35,6 +35,7 @@ public class ProblemController {
         problemService.getChoiceForProblemRegistration(model);
         return "problem/problem";
     }
+
 
     @GetMapping(HttpEndPoints.PROBLEMS_UPDATE)
     public String getFormForUpdate(Model model, @PathVariable UUID problemUuid) {
@@ -69,6 +70,7 @@ public class ProblemController {
         return getListOfProblems(model, pageable);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(HttpEndPoints.PROBLEMS_DELETE)
     public String deleteProblem(Model model,
                                 @PathVariable UUID problemUuid,
