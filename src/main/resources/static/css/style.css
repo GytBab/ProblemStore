@@ -26,3 +26,9 @@ body.login {
     background-color: #006432;
     color: white;
 }
+
+.centered-span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
