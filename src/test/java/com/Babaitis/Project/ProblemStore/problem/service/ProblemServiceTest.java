@@ -1,4 +1,4 @@
-package com.Babaitis.Project.ProblemStore.employee.service;
+package com.Babaitis.Project.ProblemStore.problem.service;
 
 import com.Babaitis.Project.ProblemStore.cause.Cause;
 import com.Babaitis.Project.ProblemStore.effect.Effect;
@@ -7,7 +7,6 @@ import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.mapper.ProblemMapper;
 import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
-import com.Babaitis.Project.ProblemStore.problem.service.ProblemService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +18,7 @@ import java.util.UUID;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class EmployeeServiceTest {
+public class ProblemServiceTest {
 
     @Mock
     private ProblemDao problemDao;
