@@ -29,7 +29,7 @@ public class ProblemServiceTest {
     private ProblemService service;
 
     @Test
-    public void saveProduct_savesAProductAndSetsCategory() {
+    public void saveProduct_savesAProduct() {
 
         UUID problemUuid = UUID.randomUUID();
         Laser laser = new Laser();
