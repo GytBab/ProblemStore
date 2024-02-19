@@ -1,5 +1,6 @@
 package com.Babaitis.Project.ProblemStore.file.service;
 
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -7,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -37,5 +39,14 @@ public class FileService {
 
     private String generateFilename(MultipartFile file) {
         return fileLocation + "/" + file.getOriginalFilename();
+    }
+
+    public ByteArrayResource download(String filename) {
+        Path path = Paths.get(fileLocation + "/" + filename);
+        try {
+            return new ByteArrayResource(Files.readAllBytes(path));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
