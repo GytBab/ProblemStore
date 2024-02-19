@@ -15,16 +15,6 @@ Spring Security version 6.2 included.
 docker compose up -d mysqldb
 ```
 
-### Run postgres
-```
-docker compose up -d postgresqldb
-```
-
-### Run pgAdmin for postgres
-```
-docker compose up -d pgadmin4
-```
-
 ## Run application using spring-boot
 ### on H2 DB
 ```
@@ -34,11 +24,6 @@ docker compose up -d pgadmin4
 ### on mysql DB
 ```
 ./mvnw spring-boot:run -Dspring.profiles.active=mysql
-```
-
-### on postgresql DB
-```
-./mvnw spring-boot:run -Dspring.profiles.active=pg
 ```
 
 ## Access the application
