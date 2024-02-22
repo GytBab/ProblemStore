@@ -7,6 +7,6 @@ spring:
   sql:
     init:
       schema-locations: classpath:db/mysql/ddl-scripts-my.sql
-      data-locations: classpath:db/dml-scripts.sql
+      data-locations: classpath:db/mysql/dml-scripts-my.sql
       platform: mysql
       mode: always

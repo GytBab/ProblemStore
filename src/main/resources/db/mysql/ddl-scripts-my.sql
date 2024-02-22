@@ -42,7 +42,7 @@ ALTER TABLE position COMMENT 'Table for possible work positions';
 
 CREATE TABLE IF NOT EXISTS employee (
                 id BIGINT AUTO_INCREMENT NOT NULL,
-                employee_uuid VARCHAR(36) NOT NULL,
+                employee_uuid BINARY(16) NOT NULL,
                 name VARCHAR(50) NOT NULL,
                 surname VARCHAR(50) NOT NULL,
                 email VARCHAR(50) NOT NULL,
@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS employee (
 );
 
 ALTER TABLE employee COMMENT 'Table for storing information about users/employees';
+
 
 CREATE TABLE IF NOT EXISTS laser_data (
                 id INT AUTO_INCREMENT NOT NULL,
@@ -78,7 +79,7 @@ ALTER TABLE laser_data COMMENT 'This table stores general information about prod
 
 CREATE TABLE IF NOT EXISTS laser (
                 id BIGINT AUTO_INCREMENT NOT NULL,
-                laser_uuid VARCHAR(36) NOT NULL,
+                laser_uuid BINARY(16) NOT NULL,
                 model INT NOT NULL,
                 serial_number VARCHAR(50) NOT NULL,
                 status VARCHAR(20) NOT NULL,
@@ -98,7 +99,7 @@ ALTER TABLE laser COMMENT 'Table for storing information throughout the manufact
 
 CREATE TABLE IF NOT EXISTS problem (
                 id BIGINT AUTO_INCREMENT NOT NULL,
-                problem_uuid VARCHAR(36) NOT NULL,
+                problem_uuid BINARY(16) NOT NULL,
                 laser_id BIGINT NOT NULL,
                 effect_id INT NOT NULL,
                 cause_id INT NOT NULL,
