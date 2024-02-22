@@ -27,8 +27,6 @@ public class ProblemJpaDaoIntegrationTest {
     private TestEntityManager testEntityManager;
     @Autowired
     private ProblemRepository repository;
-    @Mock
-    private ProblemMapper mapper;
 
     @Test
     void save_persistsAGivenProduct() {
