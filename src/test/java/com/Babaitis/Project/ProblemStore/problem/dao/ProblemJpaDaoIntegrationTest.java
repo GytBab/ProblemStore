@@ -4,8 +4,10 @@ import com.Babaitis.Project.ProblemStore.cause.Cause;
 import com.Babaitis.Project.ProblemStore.effect.Effect;
 import com.Babaitis.Project.ProblemStore.laser.Laser;
 import com.Babaitis.Project.ProblemStore.laser_data.Laser_data;
+import com.Babaitis.Project.ProblemStore.problem.mapper.ProblemMapper;
 import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -25,6 +27,8 @@ public class ProblemJpaDaoIntegrationTest {
     private TestEntityManager testEntityManager;
     @Autowired
     private ProblemRepository repository;
+    @Mock
+    private ProblemMapper mapper;
 
     @Test
     void save_persistsAGivenProduct() {
@@ -72,5 +76,45 @@ public class ProblemJpaDaoIntegrationTest {
         assertEquals(savedProblem.getComment(), problem.getComment());
         assertEquals(savedProblem.getPhotos(), problem.getPhotos());
         assertTrue(savedProblem.getId() > 0);
+    }
+
+    @Test
+    void deleteProblem_deletesAProblem() {
+        var problemDao = new ProblemJpaDao(repository);
+        Problem problemToDelete = problemDao.getAllProblems().get(1);
+        Long problemId = problemToDelete.getId();
+        UUID problemUuid = problemToDelete.getProblemUuid();
+
+        final Long id = testEntityManager.persistAndGetId(problemToDelete, Long.class);
+        repository.deleteByProblemUuid(problemUuid);
+        testEntityManager.flush();
+        Problem after = testEntityManager.find(Problem.class, id);
+        assertNull(after);
+    }
+
+    @Test
+    void updateProblem_UpdatesAProblem() {
+        var problemDao = new ProblemJpaDao(repository);
+        Problem problemToUpdate = problemDao.getAllProblems().get(1);
+        Long problemId = problemToUpdate.getId();
+        UUID problemUuid = problemToUpdate.getProblemUuid();
+
+        //Values to be updated:
+        UUID newUuid = UUID.randomUUID();
+        String newSolution = "New Solution";
+        String newDate = "2000-01-01";
+
+        problemToUpdate.setProblemUuid(newUuid);
+        problemToUpdate.setSolution(newSolution);
+        problemToUpdate.setEntryDate(newDate);
+        problemDao.update(problemToUpdate);
+
+        var id = testEntityManager.persistAndGetId(problemToUpdate, Long.class);
+        var updatedProblem = testEntityManager.find(Problem.class, id);
+
+
+        assertEquals(updatedProblem.getProblemUuid(), problemToUpdate.getProblemUuid());
+        assertEquals(updatedProblem.getSolution(), problemToUpdate.getSolution());
+        assertEquals(updatedProblem.getEntryDate(), problemToUpdate.getEntryDate());
     }
 }

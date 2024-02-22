@@ -12,24 +12,27 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
 import java.util.UUID;
 
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class ProblemServiceTest {
 
     @Mock
     private ProblemDao problemDao;
 
-    @Mock ProblemMapper mapper;
+    @Mock
+    private ProblemMapper mapper;
 
     @InjectMocks
     private ProblemService service;
 
     @Test
-    public void saveProduct_savesAProduct() {
+    public void saveProblem_savesAProduct() {
 
         UUID problemUuid = UUID.randomUUID();
         Laser laser = new Laser();
