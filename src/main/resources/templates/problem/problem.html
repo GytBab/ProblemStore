@@ -16,7 +16,7 @@
         <div class="form-group">
             <label class="form-label" th:text="#{problem.create.laser}">Laser:</label>
             <select class="form-control" th:field="*{laser}">
-                <option th:each="laser: ${lasers}" th:value="${laser.getId()}" th:text="${laser.getSerial_number()}">
+                <option th:each="laser: ${lasers}" th:value="${laser.getId()}" th:text="${laser.getSerialNumber()}">
                 </option>
             </select>
         </div>

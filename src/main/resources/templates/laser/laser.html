@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{fragments/layout :: head(#{laser.create.title})}"></head>
+<body>
+<header th:replace="~{fragments/layout :: header}"></header>
+<nav th:replace="~{fragments/layout :: nav('lasers/create')}">placeholder</nav>
+<main class="container">
+    <h3 th:text="#{laser.create.title}">Register a problem:</h3>
+    <div th:if="${message ne null and message.length > 0}"
+         class="alert alert-success" role="alert"
+         th:text="${message}">
+        Success message when laser was registered
+    </div>
+    <form method="post" th:object="${laserDto}">
+
+        <div class="form-group">
+            <label class="form-label" th:text="#{laser.create.model}">Model:</label>
+            <select class="form-control" th:field="*{model}">
+                <option th:each="laser_data: ${lasers_data}" th:value="${laser_data.getId()}" th:text="${laser_data.getModel()}">
+                </option>
+            </select>
+        </div>
+
+        <br/>
+        <div class="form-group">
+            <label class="form-label" th:text="#{laser.create.serialNo}">Serial Number:</label>
+            <input class="form-control" type="text" placeholder="Serial Number" th:field="*{serialNumber}">
+            <span th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}" th:errorclass="form-error"></span>
+        </div>
+
+        <br/>
+        <div class="form-group">
+            <label class="form-label" th:text="#{laser.create.status}">Status:</label>
+            <select class="form-control" th:field="*{status}">
+                <option value="Orders">Orders</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Quality Assurance">Quality Assurance</option>
+                <option value="Finished">Finished</option>
+            </select>
+        </div>
+
+        <br/>
+        <div class="form-group">
+            <label class="form-label" th:text="#{laser.create.startDate}">Date:</label>
+            <input class="form-control" type="date" placeholder="Start Date" th:field="*{startDate}">
+            <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" th:errorclass="form-error"></span>
+        </div>
+
+        <br/>
+        <div class="form-group">
+            <label class="form-label" th:text="#{laser.create.endDate}">Date:</label>
+            <input class="form-control" type="date" placeholder="End Date" th:field="*{endDate}">
+        </div>
+
+        <br/>
+        <button class="btn btn-primary; button_enter" type="submit" th:text="#{laser.create.action}">Submit</button>
+    </form>
+</main>
+<footer th:replace="~{fragments/layout :: footer}">placeholder</footer>
+</body>
+</html>
