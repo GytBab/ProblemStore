@@ -39,7 +39,7 @@ public class SecurityConfig {
                         .permitAll()
                         .loginPage("/login")                //GET - the login form
                         .loginProcessingUrl("/login")       //Specifies the URL to validate the credentials.
-                        .defaultSuccessUrl("/problems", true)
+                        .defaultSuccessUrl("/hello", true)
                         .usernameParameter("loginEmail")    //The HTTP parameter to look for the username
                         .passwordParameter("loginPassword")) //The HTTP parameter to look for the password
                 .csrf(csrf -> csrf.disable())

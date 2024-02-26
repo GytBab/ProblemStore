@@ -181,13 +181,13 @@ ALTER TABLE laser ADD CONSTRAINT laser_data_laser_fk
 ALTER TABLE laser_engineer ADD CONSTRAINT laser_laser_engineer_fk
     FOREIGN KEY (laser_id)
         REFERENCES laser(id)
-        ON DELETE NO ACTION
+        ON DELETE CASCADE
         ON UPDATE NO ACTION;
 
 ALTER TABLE problem ADD CONSTRAINT laser_problem_fk
     FOREIGN KEY (laser_id)
         REFERENCES laser (id)
-        ON DELETE NO ACTION
+        ON DELETE CASCADE
         ON UPDATE NO ACTION;
 
 ALTER TABLE employee_authorities ADD CONSTRAINT employee_employee_authorities_fk

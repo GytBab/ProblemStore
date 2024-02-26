@@ -22,15 +22,15 @@
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="rounded-circle" th:src="@{/images/basic/question-mark.png}" width="140" height="140">
-            <h2>Enter a problem</h2>
+            <h2 th:text="#{problem.create.title}">Enter a problem</h2>
             <p>Enter a problem for any laser that is in the manufacturing process. Add comments, photos and other valuable information to help make sure, this will be the last time such problem occurs!</p>
             <p><a class="btn btn-secondary; button_enter" th:href="@{/problems/create}" th:text="#{problem.create.title}" role="button">Enter a problem</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
             <img class="rounded-circle" th:src="@{/images/basic/laser.png}" width="140" height="140">
-            <h2>Register a laser</h2>
+            <h2 th:text="#{laser.create.title}">Register a laser</h2>
             <p>Register a new laser into production to store any information about possible problems occurring throughout the manufacturing time of the product.</p>
-            <p><a class="btn btn-secondary; button_enter"  href="#" role="button">Register a laser</a></p>
+            <p><a class="btn btn-secondary; button_enter"  th:href="@{/lasers/create}" th:text="#{laser.create.title}" role="button">Register a laser</a></p>
         </div><!-- /.col-lg-4 -->
     </div>
 </div>

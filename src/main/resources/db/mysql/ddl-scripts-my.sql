@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS problem (
 
                 FOREIGN KEY (laser_id)
                 REFERENCES laser (id)
-                ON DELETE NO ACTION
+                ON DELETE CASCADE
                 ON UPDATE NO ACTION
 );
 
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS laser_engineer (
 
                 FOREIGN KEY (laser_id)
                 REFERENCES laser (id)
-                ON DELETE NO ACTION
+                ON DELETE CASCADE
                 ON UPDATE NO ACTION
 );
 
