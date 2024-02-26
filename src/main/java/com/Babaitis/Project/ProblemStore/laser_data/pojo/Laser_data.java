@@ -1,7 +1,7 @@
-package com.Babaitis.Project.ProblemStore.laser_data;
+package com.Babaitis.Project.ProblemStore.laser_data.pojo;
 
 import com.Babaitis.Project.ProblemStore.employee.pojo.Employee;
-import com.Babaitis.Project.ProblemStore.laser.Laser;
+import com.Babaitis.Project.ProblemStore.laser.pojo.Laser;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,5 +25,10 @@ public class Laser_data {
     private String model;
     @OneToMany(mappedBy = "model")
     private List<Laser> lasers;
+
+    @Override
+    public String toString() {
+        return model;
+    }
 
 }

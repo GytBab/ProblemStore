@@ -2,7 +2,7 @@ package com.Babaitis.Project.ProblemStore.problem.service;
 
 import com.Babaitis.Project.ProblemStore.cause.Cause;
 import com.Babaitis.Project.ProblemStore.effect.Effect;
-import com.Babaitis.Project.ProblemStore.laser.Laser;
+import com.Babaitis.Project.ProblemStore.laser.pojo.Laser;
 import com.Babaitis.Project.ProblemStore.problem.dao.ProblemDao;
 import com.Babaitis.Project.ProblemStore.problem.dto.ProblemDto;
 import com.Babaitis.Project.ProblemStore.problem.mapper.ProblemMapper;

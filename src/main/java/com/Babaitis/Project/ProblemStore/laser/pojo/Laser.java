@@ -1,11 +1,10 @@
-package com.Babaitis.Project.ProblemStore.laser;
+package com.Babaitis.Project.ProblemStore.laser.pojo;
 
-import com.Babaitis.Project.ProblemStore.laser_data.Laser_data;
+import com.Babaitis.Project.ProblemStore.laser_data.pojo.Laser_data;
 import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,15 +22,15 @@ public class Laser {
     @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "model")
     private Laser_data model;
-    private String serial_number;
+    private String serialNumber;
     private String status;
-    private Date start_date;
-    private Date end_date;
+    private String startDate;
+    private String endDate;
     @OneToMany(mappedBy = "laser", cascade = CascadeType.DETACH)
     private List<Problem> problems;
 
     @Override
     public String toString() {
-        return serial_number;
+        return serialNumber;
     }
 }

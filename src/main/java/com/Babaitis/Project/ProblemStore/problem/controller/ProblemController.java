@@ -80,7 +80,7 @@ public class ProblemController {
     }
 
     @ExceptionHandler
-    public String productNotFound(ProblemNotFoundException e, Model model) {
+    public String problemNotFound(ProblemNotFoundException e, Model model) {
         return "problem/error/problemNotFound";
     }
 }

@@ -2,7 +2,7 @@ package com.Babaitis.Project.ProblemStore.problem.dto;
 
 import com.Babaitis.Project.ProblemStore.cause.Cause;
 import com.Babaitis.Project.ProblemStore.effect.Effect;
-import com.Babaitis.Project.ProblemStore.laser.Laser;
+import com.Babaitis.Project.ProblemStore.laser.pojo.Laser;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

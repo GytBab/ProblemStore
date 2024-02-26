@@ -1,6 +1,6 @@
 package com.Babaitis.Project.ProblemStore.employee.pojo;
 
-import com.Babaitis.Project.ProblemStore.laser_data.Laser_data;
+import com.Babaitis.Project.ProblemStore.laser_data.pojo.Laser_data;
 import com.Babaitis.Project.ProblemStore.position.Position;
 import jakarta.persistence.*;
 import lombok.*;
