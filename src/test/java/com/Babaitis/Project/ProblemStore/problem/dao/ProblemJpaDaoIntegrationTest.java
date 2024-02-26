@@ -1,20 +1,12 @@
 package com.Babaitis.Project.ProblemStore.problem.dao;
 
-import com.Babaitis.Project.ProblemStore.cause.Cause;
-import com.Babaitis.Project.ProblemStore.effect.Effect;
-import com.Babaitis.Project.ProblemStore.laser.Laser;
-import com.Babaitis.Project.ProblemStore.laser_data.Laser_data;
-import com.Babaitis.Project.ProblemStore.problem.mapper.ProblemMapper;
 import com.Babaitis.Project.ProblemStore.problem.pojo.Problem;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
