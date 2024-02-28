@@ -23,7 +23,7 @@ docker compose up -d mysqldb
 
 ### on mysql DB
 ```
-./mvnw spring-boot:run -Dspring.profiles.active=mysql
+./mvnw spring-boot:run -D"spring.profiles.active=mysql"
 ```
 
 ## Access the application

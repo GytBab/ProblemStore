@@ -55,7 +55,7 @@ public class LaserController {
             return "laser/laser";
         }
         laserService.saveLaser(laser);
-        return "redirect:/lasers/create?message=problem.create.messages.success";
+        return "redirect:/lasers/create?message=laser.create.messages.success";
     }
 
     @PreAuthorize("hasRole('ADMIN')")
